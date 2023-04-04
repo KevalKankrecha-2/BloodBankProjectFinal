@@ -11,13 +11,13 @@ namespace BloodBankProject.DAL
 {
     public class BloodBag_DALBASE : DALHelper
     {
-        #region PR_BloodStock_InsertByUserID
-        public void PR_BloodStock_InsertByUserID(BloodBagModel modelBloodBag)
+        #region PR_BloodBag_InsertByUserID
+        public void PR_BloodBag_InsertByUserID(BloodBagModel modelBloodBag)
         {
         /*    try
             {*/
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodStock_InsertByUserID");
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_InsertByUserID");
                 sqlDB.AddInParameter(dbCMD, "BloodGroupID ", SqlDbType.Int, modelBloodBag.BloodGroupID);
                 sqlDB.AddInParameter(dbCMD, "DonorID", SqlDbType.Int, modelBloodBag.DonorID);
                 sqlDB.AddInParameter(dbCMD, "VerifiedDoctorID", SqlDbType.Int, modelBloodBag.VerifiedDoctorID);
@@ -28,8 +28,6 @@ namespace BloodBankProject.DAL
                 sqlDB.AddInParameter(dbCMD, "ExpireDate", SqlDbType.DateTime, modelBloodBag.ExpireDate);
                 sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelBloodBag.Description);
                 sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
-                sqlDB.AddInParameter(dbCMD, "CreationDate", SqlDbType.DateTime, DBNull.Value);
-                sqlDB.AddInParameter(dbCMD, "ModificationDate", SqlDbType.DateTime, DBNull.Value);
                 sqlDB.ExecuteNonQuery(dbCMD);
           /*  }
             catch (Exception ex)
@@ -39,13 +37,13 @@ namespace BloodBankProject.DAL
 
         #endregion
 
-        #region PR_BloodStock_SelectAll
-        public DataTable PR_BloodStock_SelectAll()
+        #region PR_BloodBag_SelectAll
+        public DataTable PR_BloodBag_SelectAll()
         {
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodStock_SelectAll");
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectAll");
                 DataTable dtBloodBag = new DataTable();
                 using (IDataReader drBloodBag = sqlDB.ExecuteReader(dbCMD))
                 {
@@ -84,14 +82,14 @@ namespace BloodBankProject.DAL
 
         #endregion
 
-        #region PR_BloodStock_DeleteByPK
-        public void PR_BloodStock_DeleteByPK(int BloodBagSerialNumber)
+        #region PR_BloodBag_DeleteByPK
+        public void PR_BloodBag_DeleteByPK(int BloodBagSerialNumber)
         {
            /* try
             {*/
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodStock_DeleteByPK");
-                sqlDB.AddInParameter(dbCMD, "BloodBagSerialNumber", DbType.Int32, BloodBagSerialNumber);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_DeleteByPK");
+                sqlDB.AddInParameter(dbCMD, "BloodBagSearialNumber", DbType.Int32, BloodBagSerialNumber);
                 sqlDB.ExecuteNonQuery(dbCMD);
            /* }
             catch (Exception ex)

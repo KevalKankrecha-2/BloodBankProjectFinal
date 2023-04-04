@@ -41,22 +41,20 @@ namespace BloodBankProject.DAL
         #region PR_State_InsertByUserID
         public void PR_State_InsertByUserID(StateModel modelState)
         {
-            try
-            {
+          /*  try
+            {*/
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_State_InsertByUserID");
                 sqlDB.AddInParameter(dbCMD, "StateName", SqlDbType.NVarChar, modelState.StateName.Trim());
                 sqlDB.AddInParameter(dbCMD, "StateCode", SqlDbType.NVarChar, modelState.StateCode.Trim());
-                /*sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());*/
-                sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelState.Description);
-                sqlDB.AddInParameter(dbCMD, "CreationDate", SqlDbType.DateTime, DBNull.Value);
-                sqlDB.AddInParameter(dbCMD, "ModificationDate", SqlDbType.DateTime, DBNull.Value);
+            sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
+            sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelState.Description);
                 sqlDB.ExecuteNonQuery(dbCMD);
-            }
+            /*}
             catch (Exception ex)
             {
 
-            }
+            }*/
         }
 
         #endregion
@@ -111,10 +109,9 @@ namespace BloodBankProject.DAL
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_State_UpdateByPKUserID");
                 sqlDB.AddInParameter(dbCMD, "StateName", SqlDbType.NVarChar, modelState.StateName);
                 sqlDB.AddInParameter(dbCMD, "StateCode", SqlDbType.NVarChar, modelState.StateCode);
-                /*sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());*/
+                sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
                 sqlDB.AddInParameter(dbCMD, "StateID", SqlDbType.Int, modelState.StateID);
                 sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelState.Description);
-                sqlDB.AddInParameter(dbCMD, "ModificationDate", SqlDbType.DateTime, DBNull.Value);
                 sqlDB.ExecuteNonQuery(dbCMD);
             }
             catch (Exception ex)
@@ -198,8 +195,6 @@ namespace BloodBankProject.DAL
                 sqlDB.AddInParameter(dbCMD, "CityCode", SqlDbType.NVarChar, modelCity.CityCode.Trim());
                 sqlDB.AddInParameter(dbCMD, "StateID", SqlDbType.Int, modelCity.StateID);
                 sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelCity.Description);
-                sqlDB.AddInParameter(dbCMD, "CreationDate", SqlDbType.DateTime, DBNull.Value);
-                sqlDB.AddInParameter(dbCMD, "ModificationDate", SqlDbType.DateTime, DBNull.Value);
                 sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
 
                 sqlDB.ExecuteNonQuery(dbCMD);
@@ -221,7 +216,6 @@ namespace BloodBankProject.DAL
                 sqlDB.AddInParameter(dbCMD, "CityCode", SqlDbType.NVarChar, modelCity.CityCode.Trim());
                 sqlDB.AddInParameter(dbCMD, "StateID", SqlDbType.Int, modelCity.StateID);
                 sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelCity.Description);
-                sqlDB.AddInParameter(dbCMD, "ModificationDate", SqlDbType.DateTime, DBNull.Value);
                 sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
                 sqlDB.AddInParameter(dbCMD, "CityID", SqlDbType.Int, modelCity.CityID);
                 sqlDB.ExecuteNonQuery(dbCMD);

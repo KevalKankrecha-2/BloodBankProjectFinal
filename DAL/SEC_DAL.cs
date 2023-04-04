@@ -18,7 +18,7 @@ namespace BloodBankProject.DAL
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_User_SelectByNamePassword");
                 sqlDB.AddInParameter(dbCMD, "UserName", SqlDbType.VarChar, UserName);
-                    sqlDB.AddInParameter(dbCMD, "UserPassword", SqlDbType.VarChar, Password);
+                    sqlDB.AddInParameter(dbCMD, "Password", SqlDbType.VarChar, Password);
                 DataTable dt = new DataTable();
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {

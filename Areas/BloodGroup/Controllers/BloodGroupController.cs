@@ -17,7 +17,7 @@ namespace BloodBankProject.Areas.BloodGroup.Controllers
         public IActionResult Index()
         {
             BloodGroup_DAL dalBloodGroup = new BloodGroup_DAL();
-            DataTable dtBloodGroup = dalBloodGroup.PR_BloodGroupSelectAll();
+            DataTable dtBloodGroup = dalBloodGroup.PR_BloodGroup_SelectAll();
             return View("BloodGroupList", dtBloodGroup);
         }
 
@@ -28,7 +28,7 @@ namespace BloodBankProject.Areas.BloodGroup.Controllers
             BloodGroup_DAL dalBloodGroup = new BloodGroup_DAL();
             if (BloodGroupID != null)
             {
-                DataTable dtBloodGroupByPK = dalBloodGroup.PR_BloodGroupSelectByPK(BloodGroupID);
+                DataTable dtBloodGroupByPK = dalBloodGroup.PR_BloodGroup_SelectByPK(BloodGroupID);
                 if (dtBloodGroupByPK.Rows.Count == 1)
                 {
                     foreach (DataRow drBloodGroup in dtBloodGroupByPK.Rows)

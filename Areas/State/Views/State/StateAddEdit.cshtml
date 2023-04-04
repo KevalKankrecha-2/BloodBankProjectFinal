@@ -2,8 +2,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using BloodBankProject.BAL;
-@using System.Data
-@model DataTable
+@model BloodBankProject.Areas.State.Models.StateModel
 <div class="content-page">
     <div class="content">
         <!-- Topbar Start -->
@@ -242,100 +241,85 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a asp-area="DashBoard" asp-controller="Home" asp-action="Index">Admin Panel</a></li>
-                                <li class="breadcrumb-item">Blood Bag</li>
-                                <li class="breadcrumb-item active"><a asp-area="BloodBag" asp-controller="BloodBag" asp-action="Index">Blood Bag</a></li>
-                                <li class="breadcrumb-item active">List</li>
+                                <li class="breadcrumb-item">Location</li>
+                                <li class="breadcrumb-item active"><a asp-area="State" asp-controller="State" asp-action="Index">State</a></li>
+                                <li class="breadcrumb-item active">Add Edit</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Blood Bags</h4>
+
+
                     </div>
                 </div>
             </div>
             <!-- end page title -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title">Blood Bag List</h4>
-                            <div class="m-3">
-                                <form asp-area="BloodBag" asp-controller="BloodBag" asp-action="Add">
-                                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-plus-circle"></i>Add Blood Bag</button>
-                                </form>
-                            </div>
-
                             <div class="tab-content">
-                                <div class="tab-pane show active" id="scroll-horizontal-preview">
-                                    <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th>Blood Bag Searial Number</th>
-                                                <th>Donor Name</th>
-                                                <th>BloodGroup Name</th>
-                                                <th>Donate Date</th>
-                                                <th>Expire Date</th>
-                                                <th>Doctor Name</th>
-                                                <th>VerificationDoctor Remarks</th>
-                                                <th>Status</th>
-                                                <th>OutPatient Name</th>
-                                                <th>Creation Date</th>
-                                                <th>Modification Date</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (DataRow drBloodBag in Model.Rows)
-                                            {
-                                                <tr>
-                                                    <td>@drBloodBag["BloodBagSearialNumber"]</td>
-                                                    <td>@drBloodBag["DonorName"]</td>
-                                                    <td>@drBloodBag["BloodGroupName"]</td>
-                                                    <td>@drBloodBag["DonateDate"]</td>
-                                                    <td>@drBloodBag["ExpireDate"]</td>
-                                                    <td>@drBloodBag["DoctorName"]</td>
-                                                    <td>@drBloodBag["VerificationDoctorRemarks"]</td>
-                                                    <td>@drBloodBag["Status"]</td>
-                                                    <td>@drBloodBag["OutPatientName"]</td>
-                                                    <td>@drBloodBag["CreationDate"]</td>
-                                                    <td>@drBloodBag["ModificationDate"]</td>
+                                <div class="tab-pane show active" id="typeahead-preview">
+                                    <h4 class="page-title">Add State</h4>
+                                    <form method="post" asp-area="State" asp-controller="State" asp-action="Save">
+                                        @Html.HiddenFor(x => x.StateID)
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label font-weight-bold">State Name</label>
+                                                    <input type="text" class="form-control" data-provide="typeahead" asp-for="StateName" placeholder="State Name">
+                                                </div>
+                                            </div> <!-- end col -->
 
-                                                    <td>
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <form asp-area="BloodBag" asp-controller="BloodBag" asp-action="Add">
-                                                                    <input type="hidden" value=@drBloodBag["BloodBagSearialNumber"] name="BloodBagSerialNumber" />
-                                                                    <button type="submit" style="background-color:transparent;border:transparent">
-                                                                        <a href="" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <form asp-area="BloodBag" asp-controller="BloodBag" asp-action="Delete">
-                                                                    <input type="hidden" value=@drBloodBag["BloodBagSearialNumber"] name="BloodBagSerialNumber" />
-                                                                    <button type="submit" style="background-color:transparent;border:transparent" onclick="return DeleteConfirm();">
-                                                                        <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
+                                            <div class="col-lg-6 mt-3 mt-lg-0">
+                                                <div class="mb-3">
+                                                    <label class="form-label font-weight-bold">State Code</label>
+                                                    <input id="bloodhound" class="form-control" type="text" asp-for="StateCode" placeholder="State Code">
+                                                </div>
+                                            </div> <!-- end col -->
+                                        </div>
+                                        <!-- end row -->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label class="form-label font-weight-bold">Description</label>
+                                                    <textarea class="form-control" asp-for="Description" placeholder="Description"></textarea>
+                                                </div>
+                                            </div> <!-- end col -->
+
+                                        </div>
+                                        <!-- end row -->
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <input type="submit" class="btn btn-primary" value="Save">
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div> <!-- end preview-->
 
                             </div> <!-- end tab-content-->
 
-                        </div> <!-- end card body-->
-                    </div> <!-- end card -->
-                </div><!-- end col-->
+                        </div> <!-- end card-body -->
+                    </div> <!-- end card-->
+                </div> <!-- end col -->
             </div>
-            <!-- end row-->
-
-
-
-
+            <!-- end row -->
 
 
         </div> <!-- container -->
@@ -359,5 +343,12 @@
         </div>
     </footer>
     <!-- end Footer -->
+
 </div>
+
+<!-- ============================================================== -->
+<!-- End Page content -->
+<!-- ============================================================== -->
+<!-- END wrapper -->
+<!-- Right Sidebar -->
 @section Scripts{}

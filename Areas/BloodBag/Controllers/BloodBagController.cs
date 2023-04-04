@@ -18,7 +18,7 @@ namespace BloodBankProject.Areas.BloodBag.Controllers
         public IActionResult Index()
         {
             BloodBag_DAL dalBloodBag = new BloodBag_DAL();
-            DataTable dtBloodBag = dalBloodBag.PR_BloodStock_SelectAll();
+            DataTable dtBloodBag = dalBloodBag.PR_BloodBag_SelectAll();
             return View("BloodBagList", dtBloodBag);
         }
 
@@ -133,11 +133,11 @@ namespace BloodBankProject.Areas.BloodBag.Controllers
             BloodBag_DAL dalBloodBag = new BloodBag_DAL();
             if (modelBloodBag.BloodBagSerialNumber != null)
             {
-                /*dalBloodBag.PR_BloodStock_UpdateByPKUserID(modelBloodBag);*/
+                dalBloodBag.PR_BloodStock_UpdateByPKUserID(modelBloodBag);
             }
             else
             {
-                /*dalBloodBag.PR_BloodStock_InsertByUserID(modelBloodBag);*/
+                dalBloodBag.PR_BloodBag_InsertByUserID(modelBloodBag);
             }
             
             return RedirectToAction("Index");
@@ -148,7 +148,7 @@ namespace BloodBankProject.Areas.BloodBag.Controllers
         public IActionResult Delete(int BloodBagSerialNumber)
         {
             BloodBag_DAL dalBloodBag = new BloodBag_DAL();
-            dalBloodBag.PR_BloodStock_DeleteByPK(BloodBagSerialNumber);
+            dalBloodBag.PR_BloodBag_DeleteByPK(BloodBagSerialNumber);
             return RedirectToAction("Index");
         }
         #endregion

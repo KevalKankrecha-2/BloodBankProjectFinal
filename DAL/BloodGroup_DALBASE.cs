@@ -12,13 +12,13 @@ namespace BloodBankProject.DAL
 {
     public class BloodGroup_DALBASE : DALHelper
     {
-        #region PR_BloodGroupSelectAll
-        public DataTable PR_BloodGroupSelectAll()
+        #region PR_BloodGroup_SelectAll
+        public DataTable PR_BloodGroup_SelectAll()
         {
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodGroupSelectAll");
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodGroup_SelectAll");
                 DataTable dtBloodGroup = new DataTable();
                 using (IDataReader drBloodGroup = sqlDB.ExecuteReader(dbCMD))
                 {
@@ -34,13 +34,13 @@ namespace BloodBankProject.DAL
 
         #endregion
 
-        #region PR_BloodGroupSelectByPK
-        public DataTable PR_BloodGroupSelectByPK(int? BloodGroupID)
+        #region PR_BloodGroup_SelectByPK
+        public DataTable PR_BloodGroup_SelectByPK(int? BloodGroupID)
         {
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodGroupSelectByPK");
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodGroup_SelectByPK");
                 sqlDB.AddInParameter(dbCMD, "BloodGroupID", SqlDbType.Int, BloodGroupID);
                 DataTable dtBloodGroup = new DataTable();
 
@@ -92,8 +92,6 @@ namespace BloodBankProject.DAL
                 sqlDB.AddInParameter(dbCMD, "BloodGroupName", SqlDbType.NVarChar, modelBloodGroup.BloodGroupName.Trim());
                 sqlDB.AddInParameter(dbCMD, "Price", SqlDbType.Decimal, modelBloodGroup.Price);
                 sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelBloodGroup.Description);
-                sqlDB.AddInParameter(dbCMD, "CreationDate", SqlDbType.DateTime, DBNull.Value);
-                sqlDB.AddInParameter(dbCMD, "ModificationDate", SqlDbType.DateTime, DBNull.Value);
                 sqlDB.AddInParameter(dbCMD, "UserId", SqlDbType.Int, CommonVariables.UserID());
                 sqlDB.ExecuteNonQuery(dbCMD);
             }
@@ -115,8 +113,6 @@ namespace BloodBankProject.DAL
                 sqlDB.AddInParameter(dbCMD, "BloodGroupName", SqlDbType.NVarChar, modelBloodGroup.BloodGroupName.Trim());
                 sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelBloodGroup.Description);
                 sqlDB.AddInParameter(dbCMD, "Price", SqlDbType.Decimal, modelBloodGroup.Price);
-                sqlDB.AddInParameter(dbCMD, "CreationDate", SqlDbType.DateTime, DBNull.Value);
-                sqlDB.AddInParameter(dbCMD, "ModificationDate", SqlDbType.DateTime, DBNull.Value);
                 sqlDB.AddInParameter(dbCMD, "UserId", SqlDbType.Int, CommonVariables.UserID());
                 sqlDB.AddInParameter(dbCMD, "BloodGroupID", SqlDbType.Int, modelBloodGroup.BloodGroupID);
                 sqlDB.ExecuteNonQuery(dbCMD);

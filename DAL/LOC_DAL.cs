@@ -35,8 +35,8 @@ namespace BloodBankProject.DAL
         #region PR_City_SelectForDropDownListByStateID
         public DataTable PR_City_SelectForDropDownListByStateID(int StateID)
         {
-            try
-            {
+            /*try
+            {*/
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_City_SelectForDropDownListByStateID");
                 sqlDB.AddInParameter(dbCMD, "StateID", DbType.Int32, StateID);
@@ -46,11 +46,11 @@ namespace BloodBankProject.DAL
                     dtCity.Load(drCity);
                 }
                 return dtCity;
-            }
+            /*}
             catch (Exception ex)
             {
                 return null;
-            }
+            }*/
         }
 
         #endregion
