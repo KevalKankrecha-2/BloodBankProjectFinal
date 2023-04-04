@@ -268,13 +268,14 @@
                                                 @if (ViewBag.BloodGroupDropDownList != null)
                                                 {
                                                     <label class="form-label font-weight-bold">Select BloodGroup</label>
-                                                    <select class="form-control select2" data-toggle="select2" asp-items="@(new SelectList(ViewBag.BloodGroupDropDownList, "BloodGroupID", "BloodGroupName").ToList()) " asp-for="BloodGroupID">
+                                                    <select class="form-control select2 BloodGroupDropDown" data-toggle="select2" asp-items="@(new SelectList(ViewBag.BloodGroupDropDownList, "BloodGroupID", "BloodGroupName").ToList()) " asp-for="BloodGroupID" onchange="GetDonorByBloodGroup()">
+                                                        <option>Select BloodGroup</option>
                                                     </select>
                                                 }
                                             </div> <!-- end col -->
                                             <div class="col-lg-6">
-                                                <label class="form-label font-weight-bold">Select Donate</label>
-                                                <select class="form-control select2" data-toggle="select2" asp-items="@(new SelectList(ViewBag.DonorDropDownList, "DonorID", "DonorName").ToList()) " asp-for="DonorID">
+                                                <label class="form-label font-weight-bold">Select Donor</label>
+                                                <select class="form-control select2" data-toggle="select2" id="DonorIDDropDown" asp-for="DonorID">
                                                 </select>
                                             </div> <!-- end col -->
                                         </div>
@@ -382,13 +383,37 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @section Scripts{
-
     <script>
         function date_chng() {
             first_date = new Date($('.DaonateDateFillAuto').val());
             output_f = new Date(first_date.setDate(first_date.getDate() + 42)).toISOString().split('.');
             output_s = output_f[0].split('T');
             $('.ExpireDateFillAuto').val(output_s[0]);
+        }
+
+        function GetDonorByBloodGroup() {
+            BloodGroupID = $('.BloodGroupDropDown').find(":selected").val();
+            $("#DonorIDDropDown").empty();
+            $("#DonorIDDropDown").append($("<option></option>").val("").html("Select Donor"));
+            if (BloodGroupID !== "") {
+                $.ajax(
+                    {
+                        type: "POST",
+                        contentType: "application/json; charset:utf-8",
+                        url: "@Url.Action("SelectDonorByBloodGroup", "BloodBag")" + "?&BloodGroupID=" + BloodGroupID,
+                        data: {},
+                        dataType: "json",
+                        success: function (Result) {
+                            $.each(Result,
+                                function (key, value) {
+                                    $("#DonorIDDropDown").append($("<option></option>").val(value.donorID).html(value.donorName));
+                                });
+                        },
+                        error: function (r) {
+                            alert("Error while loading dropdown.");
+                        }
+                    });
+            }
         }
     </script>
 

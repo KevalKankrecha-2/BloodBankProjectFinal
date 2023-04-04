@@ -38,9 +38,6 @@ namespace BloodBankProject.Areas.Donor.Models
         public int? DonorID { get; set; }
 
         public string DonorName { get; set; }
-
-        
-
     }
 }
 

@@ -59,14 +59,14 @@ namespace BloodBankProject.DAL
 
         #endregion
 
-        #region PR_BloodStock_SelectByPK
-        public DataTable PR_BloodStock_SelectByPK(int? BloodBagSerialNumber)
+        #region PR_BloodBag_SelectByPK
+        public DataTable PR_BloodBag_SelectByPK(int? BloodBagSerialNumber)
         {
             try
             {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodStock_SelectByPK");
-                sqlDB.AddInParameter(dbCMD, "BloodBagSerialNumber", DbType.Int32, BloodBagSerialNumber);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectByPK");
+                sqlDB.AddInParameter(dbCMD, "BloodBagSearialNumber", DbType.Int32, BloodBagSerialNumber);
                 DataTable dtBloodBag = new DataTable();
                 using (IDataReader drBloodBag = sqlDB.ExecuteReader(dbCMD))
                 {

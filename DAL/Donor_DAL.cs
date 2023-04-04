@@ -31,5 +31,28 @@ namespace BloodBankProject.DAL
         }
 
         #endregion
+
+        #region PR_Donor_SelectByBloodGroup
+        public DataTable PR_Donor_SelectByBloodGroup(int BloodGroupID)
+        {
+          /*  try
+            {*/
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Donor_SelectByBloodGroup");
+                sqlDB.AddInParameter(dbCMD, "BloodGroupID", DbType.Int32, BloodGroupID);
+                DataTable dtDonorDropDown = new DataTable();
+                using (IDataReader drDonorDropDown = sqlDB.ExecuteReader(dbCMD))
+                {
+                    dtDonorDropDown.Load(drDonorDropDown);
+                }
+                return dtDonorDropDown;
+           /* }
+            catch (Exception ex)
+            {
+                return null;
+            }*/
+        }
+
+        #endregion
     }
 }

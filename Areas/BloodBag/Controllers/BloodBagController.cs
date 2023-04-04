@@ -102,19 +102,19 @@ namespace BloodBankProject.Areas.BloodBag.Controllers
 
             if (BloodBagSerialNumber != null)
             {
-                DataTable dtBloodStockByPK = dalBloodBag.PR_BloodStock_SelectByPK(BloodBagSerialNumber);
+                DataTable dtBloodStockByPK = dalBloodBag.PR_BloodBag_SelectByPK(BloodBagSerialNumber);
                 #region Select By PK
 
                 if (dtBloodStockByPK.Rows.Count == 1)
                 {
                     foreach (DataRow drBlooStockByPK in dtBloodStockByPK.Rows)
                     {
-                        modelBloodBag.BloodBagSerialNumber = Convert.ToInt32(drBlooStockByPK["BloodBagSerialNumber"]);
+                        modelBloodBag.BloodBagSerialNumber = Convert.ToInt32(drBlooStockByPK["BloodBagSearialNumber"]);
                         modelBloodBag.DonorID = Convert.ToInt32(drBlooStockByPK["DonorID"]);
                         modelBloodBag.BloodGroupID = Convert.ToInt32(drBlooStockByPK["BloodGroupID"]);
                         modelBloodBag.DonateDate = Convert.ToDateTime(drBlooStockByPK["DonateDate"]);
                         modelBloodBag.ExpireDate = Convert.ToDateTime(drBlooStockByPK["ExpireDate"]);
-                        modelBloodBag.VerifiedDoctorID = Convert.ToInt32(drBlooStockByPK["VerifiedDoctorID"]);
+                        modelBloodBag.VerifiedDoctorID = Convert.ToInt32(drBlooStockByPK["VerificationDoctorID"]);
                         modelBloodBag.VerificationDoctorRemarks = Convert.ToString(drBlooStockByPK["VerificationDoctorRemarks"]);
                         modelBloodBag.Description = Convert.ToString(drBlooStockByPK["Description"]);
 
@@ -150,6 +150,24 @@ namespace BloodBankProject.Areas.BloodBag.Controllers
             BloodBag_DAL dalBloodBag = new BloodBag_DAL();
             dalBloodBag.PR_BloodBag_DeleteByPK(BloodBagSerialNumber);
             return RedirectToAction("Index");
+        }
+        #endregion
+
+        #region Get Donor By Blood Group
+        public IActionResult SelectDonorByBloodGroup(int BloodGroupID)
+        {
+            Donor_DAL dalDonor = new Donor_DAL();
+            DataTable dtDonor = dalDonor.PR_Donor_SelectByBloodGroup(BloodGroupID);
+            List<DonorDropDownModel> DonorDropDownList = new List<DonorDropDownModel>();
+            foreach (DataRow dr in dtDonor.Rows)
+            {
+                DonorDropDownModel dropdown = new DonorDropDownModel();
+                dropdown.DonorID = Convert.ToInt32(dr["DonorID"]);
+                dropdown.DonorName = Convert.ToString(dr["DonorName"]);
+                DonorDropDownList.Add(dropdown);
+            }
+            var vModel = DonorDropDownList;
+            return Json(vModel);
         }
         #endregion
 
