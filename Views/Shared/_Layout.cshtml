@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Analytics Dashboard | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
+    <meta content="Coderthemes" name="author">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assets/images/favicon.ico">
+
+    <!-- third party css -->
+    <link href="~/assets/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
+
+    <link href="~/assets/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/vendor/buttons.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/vendor/select.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <!-- third party css end -->
+    <!-- App css -->
+    <link href="~/assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style">
+    <link href="~/assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
+
+    @*Display Map css and scrips*@
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="~/MapAssets/demo.css" />
+    <link rel="stylesheet" type="text/css" href="~/MapAssets/styles.css" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
+
+    @* End *@
+
+</head>
+
+<body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="leftside-menu">
+
+            <!-- LOGO -->
+            <a href="index.html" class="logo text-center logo-light">
+                <span class="logo-lg">
+                    <img src="~/assets/images/logo.png" alt="" height="16">
+                </span>
+                <span class="logo-sm">
+                    <img src="~/assets/images/logo_sm.png" alt="" height="16">
+                </span>
+            </a>
+
+            <!-- LOGO -->
+            <a href="index.html" class="logo text-center logo-dark">
+                <span class="logo-lg">
+                    <img src="~/assets/images/logo-dark.png" alt="" height="16">
+                </span>
+                <span class="logo-sm">
+                    <img src="~/assets/images/logo_sm_dark.png" alt="" height="16">
+                </span>
+            </a>
+
+            <div class="h-100" id="leftside-menu-container" data-simplebar="">
+
+                <!--- Sidemenu -->
+                <ul class="side-nav">
+
+                    <li class="side-nav-title side-nav-item">Navigation</li>
+
+                    <li class="side-nav-item">
+                        <a data-bs-toggle="collapse" asp-area="DashBoard" asp-controller="Home" asp-action="Index" class="side-nav-link">
+                            <span> Dashboards </span>
+                        </a>
+                        <div class="collapse" id="sidebarDashboards">
+                            <ul class="side-nav-second-level">
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="side-nav-title side-nav-item">General</li>
+
+                    <li class="side-nav-item">
+                        <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                            <i class="uil-envelope"></i>
+                            <span> Location </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarEmail">
+                            <ul class="side-nav-second-level">
+                                <li>
+                                    <a asp-area="State" asp-controller="State" asp-action="Index">State</a>
+                                </li>
+                                <li>
+                                    <a asp-area="City" asp-controller="City" asp-action="Index">City</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a data-bs-toggle="collapse" href="#sidebarMaps" aria-expanded="false" aria-controls="sidebarMaps" class="side-nav-link">
+                            <i class="uil-location-point"></i>
+                            <span> Blood Bank </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarMaps">
+                            <ul class="side-nav-second-level">
+                                <li>
+                                    <a asp-area="BloodBank" asp-controller="BloodBank" asp-action="Index">Blood Bank Details</a>
+                                </li>
+                                <li>
+                                    <a asp-area="BloodBank" asp-controller="BloodBank" asp-action="Add">Add</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a data-bs-toggle="collapse" href="#sidebarTables" aria-expanded="false" aria-controls="sidebarTables" class="side-nav-link">
+                            <i class="uil-table"></i>
+                            <span> Master </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarTables">
+                            <ul class="side-nav-second-level">
+                                <li>
+                                    <a asp-area="Donor" asp-controller="Donor" asp-action="Index">Donor</a>
+                                </li>
+                                <li>
+                                    <a asp-area="Doctor" asp-controller="Doctor" asp-action="Index">Doctor</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a data-bs-toggle="collapse" href="#sidebarMultiLevel" aria-expanded="false" aria-controls="sidebarMultiLevel" class="side-nav-link">
+                            <i class="uil-folder-plus"></i>
+                            <span> Blood </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarMultiLevel">
+                            <ul class="side-nav-second-level">
+                                <li class="side-nav-item">
+                                    <a asp-area="BloodGroup" asp-controller="BloodGroup" asp-action="Index" aria-expanded="false">
+                                        Blood Group
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+                    <li class="side-nav-item">
+                        <a data-bs-toggle="collapse" href="#sidebarExtendedUI" aria-expanded="false" aria-controls="sidebarExtendedUI" class="side-nav-link">
+                            <i class="uil-package"></i>
+                            <span> Blood Stock </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarExtendedUI">
+                            <ul class="side-nav-second-level">
+                                <li>
+                                    <a asp-area="BloodBag" asp-controller="BloodBag" asp-action="Index">Blood Bags</a>
+                                </li>
+                                <li>
+                                    <a asp-area="OutPatient" asp-controller="OutPatient" asp-action="Index">Out Patients</a>
+                                </li>
+                                <li>
+                                    <a href="extended-ratings.html">Expire Blood Bags</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+
+                </ul>
+
+                <!-- End Sidebar -->
+
+                <div class="clearfix"></div>
+
+            </div>
+            <!-- Sidebar -left -->
+
+        </div>
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+        @RenderBody();
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+
+    </div>
+    <!-- END wrapper -->
+    <!-- Right Sidebar -->
+    <div class="end-bar">
+
+        <div class="rightbar-title">
+            <a href="javascript:void(0);" class="end-bar-toggle float-end">
+                <i class="dripicons-cross noti-icon"></i>
+            </a>
+            <h5 class="m-0">Settings</h5>
+        </div>
+
+        <div class="rightbar-content h-100" data-simplebar="">
+
+            <div class="p-3">
+                <div class="alert alert-warning" role="alert">
+                    <strong>Customize </strong> the overall color scheme, sidebar menu, etc.
+                </div>
+
+                <!-- Settings -->
+                <h5 class="mt-3">Color Scheme</h5>
+                <hr class="mt-1">
+
+                <div class="form-check form-switch mb-1">
+                    <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="light" id="light-mode-check" checked="">
+                    <label class="form-check-label" for="light-mode-check">Light Mode</label>
+                </div>
+
+                <div class="form-check form-switch mb-1">
+                    <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="dark" id="dark-mode-check">
+                    <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
+                </div>
+
+
+                <!-- Width -->
+                <h5 class="mt-4">Width</h5>
+                <hr class="mt-1">
+                <div class="form-check form-switch mb-1">
+                    <input class="form-check-input" type="checkbox" name="width" value="fluid" id="fluid-check" checked="">
+                    <label class="form-check-label" for="fluid-check">Fluid</label>
+                </div>
+
+                <div class="form-check form-switch mb-1">
+                    <input class="form-check-input" type="checkbox" name="width" value="boxed" id="boxed-check">
+                    <label class="form-check-label" for="boxed-check">Boxed</label>
+                </div>
+
+
+                <!-- Left Sidebar-->
+                <h5 class="mt-4">Left Sidebar</h5>
+                <hr class="mt-1">
+                <div class="form-check form-switch mb-1">
+                    <input class="form-check-input" type="checkbox" name="theme" value="default" id="default-check">
+                    <label class="form-check-label" for="default-check">Default</label>
+                </div>
+
+                <div class="form-check form-switch mb-1">
+                    <input class="form-check-input" type="checkbox" name="theme" value="light" id="light-check" checked="">
+                    <label class="form-check-label" for="light-check">Light</label>
+                </div>
+
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" name="theme" value="dark" id="dark-check">
+                    <label class="form-check-label" for="dark-check">Dark</label>
+                </div>
+
+                <div class="form-check form-switch mb-1">
+                    <input class="form-check-input" type="checkbox" name="compact" value="fixed" id="fixed-check" checked="">
+                    <label class="form-check-label" for="fixed-check">Fixed</label>
+                </div>
+
+                <div class="form-check form-switch mb-1">
+                    <input class="form-check-input" type="checkbox" name="compact" value="condensed" id="condensed-check">
+                    <label class="form-check-label" for="condensed-check">Condensed</label>
+                </div>
+
+                <div class="form-check form-switch mb-1">
+                    <input class="form-check-input" type="checkbox" name="compact" value="scrollable" id="scrollable-check">
+                    <label class="form-check-label" for="scrollable-check">Scrollable</label>
+                </div>
+
+                <div class="d-grid mt-4">
+                    <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
+
+                    <a href="../../product/hyper-responsive-admin-dashboard-template/index.htm" class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
+                </div>
+            </div> <!-- end padding-->
+
+        </div>
+    </div>
+
+    <div class="rightbar-overlay"></div>
+    <!-- /End-bar -->
+    <!-- bundle -->
+
+    <script src="~/assets/js/vendor.min.js"></script>
+    <script src="~/assets/js/app.min.js"></script>
+
+    <!-- third party js -->
+    <!-- <script src="~/assets/js/vendor/Chart.bundle.min.js"></script> -->
+    <script src="~/assets/js/vendor/apexcharts.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- third party js ends -->
+    <script src="~/assets/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="~/assets/js/vendor/dataTables.bootstrap5.js"></script>
+    <script src="~/assets/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="~/assets/js/vendor/responsive.bootstrap5.min.js"></script>
+    <script src="~/assets/js/vendor/dataTables.buttons.min.js"></script>
+    <script src="~/assets/js/vendor/buttons.bootstrap5.min.js"></script>
+    <script src="~/assets/js/vendor/buttons.html5.min.js"></script>
+    <script src="~/assets/js/vendor/buttons.flash.min.js"></script>
+    <script src="~/assets/js/vendor/buttons.print.min.js"></script>
+    <script src="~/assets/js/vendor/dataTables.keyTable.min.js"></script>
+    <script src="~/assets/js/vendor/dataTables.select.min.js"></script>
+    <script src="~/assets/js/vendor/handlebars.min.js"></script>
+    <script src="~/assets/js/vendor/typeahead.bundle.min.js"></script>
+    <script src="~/assets/js/vendor/Chart.bundle.min.js"></script>
+
+    <!-- demo app -->
+    <script src="~/assets/js/pages/demo.dashboard-analytics.js"></script>
+    <script src="~/assets/js/pages/demo.datatable-init.js"></script>
+    <script src="~/assets/js/pages/demo.typehead.js"></script>
+    <script src="~/assets/js/pages/demo.profile.js"></script>
+    <script src="~/assets/js/pages/demo.timepicker.js"></script>
+    <!-- end demo js-->
+    @*Grapth and chart JS*@
+    <script src="~/Chart_Graph_JS/react.production.min.js"></script>
+    <script src="~/Chart_Graph_JS/react-dom.production.min.js"></script>
+    <script src="~/Chart_Graph_JS/prop-types.min.js"></script>
+    <script src="~/Chart_Graph_JS/browser.min.js"></script>
+    <script src="~/Chart_Graph_JS/react-apexcharts.iife.min.js"></script>
+
+    <script src="~/Chart_Graph_JS/apexcharts..js"></script>
+    <script src="~/Chart_Graph_JS/Chart.js"></script>
+    @*end*@
+    @RenderSection("scripts")
+
+    <script>
+        function DeleteConfirm() {
+            if (confirm("Are you want to sure to delete this country.!")) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
