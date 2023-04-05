@@ -324,7 +324,7 @@
                                                     Select Multiple Blood Bags Over Here
                                                 </p>
 
-                                                <select onchange="UpdateBloodBagStatus()" id="BloodBagsList" class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                                <select id="BloodBagsList" class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
                                                 </select>
                                             </div> <!-- end col -->
                                         </div>
@@ -406,7 +406,7 @@
                 </div>
             </div>
         </div>
-        
+        <button type="button" onclick="Demo()">Check</button>
     </footer>
     <!-- end Footer -->
 </div>
@@ -449,7 +449,7 @@
 
         @*  alert(value.bloodBagSerialNumber);
                                     alert(value.price);*@
-                                         });
+                                                         });
                         },
                         error: function (r) {
                             alert("Error while loading dropdown.");
@@ -459,31 +459,29 @@
         }
 
         function Demo() {
-            var select_button_text = $('#BloodBagList option:selected')
-                .toArray().map(item => item.text);
-
-            console.log(select_button_text);
-        }
-        function UpdateBloodBagStatus() {
-            let BloodBagIdForOut = $("#BloodBagsList").find(":selected").val();
-            let OutPatientID = $("#OutPatientID").val();
-            if (BloodBagIdForOut !== "") {
-                $.ajax(
-                    {
-                        type: "POST",
-                        contentType: "application/json; charset:utf-8",
-                        url: "@Url.Action("BloodStockUpdateStatusByBloodBagSerialNumber", "OutPatient")" + "?&BloodBagIdForOut=" + BloodBagIdForOut + "&OutPatientID" + OutPatientID,
-                        data: {},
-                        dataType: "json",
-                        success: function (Result) {
-                            alert(" outed..!!");
-                        },
-                        error: function (r) {
-                            alert("Error while loading dropdown.");
-                        }
-                    });
+            var selected = [];
+            $('#BloodBagsList :selected').each(function () {
+                selected[$(this).val()] = $(this).text();
+            });
+            for (var i = 0; i < selected.length; i++) {
+                if (selected[i] != null) {
+                    let OutPatientID = $("#OutPatientID").val();
+                    let BloodBagIdForOut = selected[i];
+                    $.ajax(
+                        {
+                            type: "POST",
+                            contentType: "application/json; charset:utf-8",
+                            url: "@Url.Action("BloodStockUpdateStatusByBloodBagSerialNumber", "OutPatient")" + "?&BloodBagIdForOut=" + BloodBagIdForOut + "&OutPatientID" + OutPatientID,
+                            data: {},
+                            dataType: "json",
+                            success: function (Result) {
+                            },
+                            error: function (r) {
+                                alert("Error while loading dropdown.");
+                            }
+                        });
+                }
             }
         }
-
     </script>
 }
