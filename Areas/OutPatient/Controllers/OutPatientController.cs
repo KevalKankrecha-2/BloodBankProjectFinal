@@ -143,10 +143,10 @@ namespace BloodBankProject.Areas.OutPatient.Controllers
         #endregion
 
         #region Update Blood Bag Status
-        public IActionResult BloodStockUpdateStatusByBloodBagSerialNumber(int BloodBagIdForOut,int OutPatientID)
+        public IActionResult BloodStockUpdateStatusByBloodBagSerialNumber(int BloodBagIdForOut,string OutPatientID)
         {
             OutPatient_DAL dalOutPatient= new OutPatient_DAL();
-            dalOutPatient.PR_BloodBag_UpdateStatusByBloodBagSerialNumber(BloodBagIdForOut,OutPatientID); ;
+            dalOutPatient.PR_BloodBag_UpdateStatusByBloodBagSerialNumber(BloodBagIdForOut, OutPatientID); ;
             return Json("");
         }
         #endregion

@@ -262,7 +262,7 @@
                                     <h4 class="page-title">Add/Edit OutPatient</h4>
                                     <form enctype="multipart/form-data" method="post" asp-area="OutPatient" asp-controller="OutPatient" asp-action="Save">
 
-                                        <input type="text" asp-for="OutPatientID" id="OutPatientID" placeholder="ID">
+                                        <input type="text" asp-for="OutPatientID" class="OutPatientID" placeholder="ID">
 
 
                                         <div class="row">
@@ -461,13 +461,13 @@
             let flag = true;
             for (var i = 0; i < selected.length; i++) {
                 if (selected[i] != null) {
-                    let OutPatientID = $("#OutPatientID").val();
+                    let OutPatientID = $(".OutPatientID").val();
                     let BloodBagIdForOut = selected[i];
                     $.ajax(
                         {
                             type: "POST",
                             contentType: "application/json; charset:utf-8",
-                            url: "@Url.Action("BloodStockUpdateStatusByBloodBagSerialNumber", "OutPatient")" + "?&BloodBagIdForOut=" + BloodBagIdForOut + "&OutPatientID" + OutPatientID,
+                            url: "@Url.Action("BloodStockUpdateStatusByBloodBagSerialNumber", "OutPatient")" + "?&BloodBagIdForOut=" + BloodBagIdForOut + "&OutPatientID=" + OutPatientID,
                             data: {},
                             dataType: "json",
                             success: function (Result) {

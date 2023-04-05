@@ -34,7 +34,7 @@ namespace BloodBankProject.DAL
         #endregion
 
         #region PR_BloodBag_UpdateStatusByBloodBagSerialNumber
-        public void PR_BloodBag_UpdateStatusByBloodBagSerialNumber(int BloodBagIdForOut, int OutPatientID)
+        public void PR_BloodBag_UpdateStatusByBloodBagSerialNumber(int BloodBagIdForOut, string OutPatientID)
         {
             /*try
             {*/
