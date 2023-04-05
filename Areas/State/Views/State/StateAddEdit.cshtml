@@ -254,20 +254,6 @@
             <!-- end page title -->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -275,7 +261,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane show active" id="typeahead-preview">
                                     <h4 class="page-title">Add State</h4>
-                                    <form method="post" asp-area="State" asp-controller="State" asp-action="Save">
+                                    <form method="post" asp-area="State" asp-controller="State" asp-action="Save" >
                                         @Html.HiddenFor(x => x.StateID)
                                         <div class="row">
                                             <div class="col-lg-6">
@@ -343,12 +329,6 @@
         </div>
     </footer>
     <!-- end Footer -->
-
 </div>
-
-<!-- ============================================================== -->
-<!-- End Page content -->
-<!-- ============================================================== -->
-<!-- END wrapper -->
-<!-- Right Sidebar -->
-@section Scripts{}
+@section Scripts{
+}

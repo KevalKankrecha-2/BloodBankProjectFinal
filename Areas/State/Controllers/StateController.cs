@@ -47,22 +47,23 @@ namespace BloodBankProject.Areas.State.Controllers
         public ActionResult Save(StateModel modelState)
         {
             LOC_DAL dalLOC = new LOC_DAL();
-            if (modelState.StateID == null)
-            {
-                if (modelState.StateName.Trim() != null && modelState.StateCode.Trim() != null)
+          
+                if (modelState.StateID == null)
                 {
-                    dalLOC.PR_State_InsertByUserID(modelState);
+                    if (modelState.StateName.Trim() != null)
+                    {
+                        dalLOC.PR_State_InsertByUserID(modelState);
+                    }
                 }
-            }
-            else
-            {
-                if (modelState.StateName.Trim() != null && modelState.StateCode.Trim() != null)
+                else
                 {
-                    dalLOC.PR_State_UpdateByPKUserID(modelState);
+                    if (modelState.StateName.Trim() != null && modelState.StateCode.Trim() != null)
+                    {
+                        dalLOC.PR_State_UpdateByPKUserID(modelState);
+                    }
+
                 }
-
-            }
-
+            
 
             return RedirectToAction("Index");
         }

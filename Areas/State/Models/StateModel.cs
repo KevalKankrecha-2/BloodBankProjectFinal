@@ -1,4 +1,9 @@
-﻿namespace BloodBankProject.Areas.State.Models
+﻿
+
+
+
+
+namespace BloodBankProject.Areas.State.Models
 {
     public class StateModel
     {
@@ -6,7 +11,7 @@
 
         public string StateName { get; set; }
 
-        public string StateCode { get; set; }
+        public string StateCode { get; set; }   
 
         public string Description { get; set; }
 

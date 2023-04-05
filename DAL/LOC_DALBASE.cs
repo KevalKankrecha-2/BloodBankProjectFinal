@@ -46,7 +46,7 @@ namespace BloodBankProject.DAL
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_State_InsertByUserID");
                 sqlDB.AddInParameter(dbCMD, "StateName", SqlDbType.NVarChar, modelState.StateName.Trim());
-                sqlDB.AddInParameter(dbCMD, "StateCode", SqlDbType.NVarChar, modelState.StateCode.Trim());
+                sqlDB.AddInParameter(dbCMD, "StateCode", SqlDbType.NVarChar, modelState.StateCode);
             sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
             sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelState.Description);
                 sqlDB.ExecuteNonQuery(dbCMD);
@@ -107,7 +107,7 @@ namespace BloodBankProject.DAL
             {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_State_UpdateByPKUserID");
-                sqlDB.AddInParameter(dbCMD, "StateName", SqlDbType.NVarChar, modelState.StateName);
+                sqlDB.AddInParameter(dbCMD, "StateName", SqlDbType.NVarChar, modelState.StateName.ToString().Trim());
                 sqlDB.AddInParameter(dbCMD, "StateCode", SqlDbType.NVarChar, modelState.StateCode);
                 sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
                 sqlDB.AddInParameter(dbCMD, "StateID", SqlDbType.Int, modelState.StateID);
