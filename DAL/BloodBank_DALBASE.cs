@@ -25,14 +25,12 @@ namespace BloodBankProject.DAL
                 sqlDB.AddInParameter(dbCMD, "CityID", SqlDbType.Int, modelBloodBank.CityID);
                 sqlDB.AddInParameter(dbCMD, "Address", SqlDbType.NVarChar, modelBloodBank.Address);
                 sqlDB.AddInParameter(dbCMD, "Email", SqlDbType.NVarChar, modelBloodBank.Email);
-                sqlDB.AddInParameter(dbCMD, "EstablishmentDate", SqlDbType.DateTime, modelBloodBank.EstablishmentDate);
+                sqlDB.AddInParameter(dbCMD, "EastablishmentDate", SqlDbType.DateTime, modelBloodBank.EstablishmentDate);
                 sqlDB.AddInParameter(dbCMD, "Latitude", SqlDbType.Decimal, modelBloodBank.Latitude);
                 sqlDB.AddInParameter(dbCMD, "Longtitude", SqlDbType.Decimal, modelBloodBank.Longtitude);
                 sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelBloodBank.Description);
                 sqlDB.AddInParameter(dbCMD, "Image", SqlDbType.NVarChar, modelBloodBank.Image);
                 sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
-                sqlDB.AddInParameter(dbCMD, "CreationDate", SqlDbType.DateTime, DBNull.Value);
-                sqlDB.AddInParameter(dbCMD, "ModificationDate", SqlDbType.DateTime, DBNull.Value);
 
                 DataTable dtState = new DataTable();
                 sqlDB.ExecuteNonQuery(dbCMD);

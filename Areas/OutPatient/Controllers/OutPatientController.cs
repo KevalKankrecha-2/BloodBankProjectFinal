@@ -128,12 +128,12 @@ namespace BloodBankProject.Areas.OutPatient.Controllers
         public IActionResult BloodStock_SelectInStockBloodBagsAndPriceByBloodGroup(int BloodGroupID)
         {
             OutPatient_DAL dalOutPatient = new OutPatient_DAL();
-            DataTable dtBloodBagsPrice = dalOutPatient.PR_BloodStock_SelectInStockBloodBagsAndPriceByBloodGroup(BloodGroupID);
+            DataTable dtBloodBagsPrice = dalOutPatient.PR_BloodBag_SelectInStockBloodBagsAndPriceByBloodGroup(BloodGroupID);
             List<GetAvailableBloodBagsAndPrice> GetAvailableBloodBagsAndPrice = new List<GetAvailableBloodBagsAndPrice>();
             foreach (DataRow dr in dtBloodBagsPrice.Rows)
             {
                 GetAvailableBloodBagsAndPrice dropdown = new GetAvailableBloodBagsAndPrice();
-                dropdown.BloodBagSerialNumber = Convert.ToInt32(dr["BloodBagSerialNumber"]);
+                dropdown.BloodBagSerialNumber = Convert.ToInt32(dr["BloodBagSearialNumber"]);
                 dropdown.Price = Convert.ToInt32(dr["Price"]);
                 GetAvailableBloodBagsAndPrice.Add(dropdown);
             }
@@ -143,10 +143,10 @@ namespace BloodBankProject.Areas.OutPatient.Controllers
         #endregion
 
         #region Update Blood Bag Status
-        public IActionResult BloodStockUpdateStatusByBloodBagSerialNumber(int BloodBagIdForOut,string OutPatientID)
+        public IActionResult BloodStockUpdateStatusByBloodBagSerialNumber(int BloodBagIdForOut,int OutPatientID)
         {
             OutPatient_DAL dalOutPatient= new OutPatient_DAL();
-            dalOutPatient.PR_BloodStockUpdateStatusByBloodBagSerialNumber(BloodBagIdForOut,OutPatientID); ;
+            dalOutPatient.PR_BloodBag_UpdateStatusByBloodBagSerialNumber(BloodBagIdForOut,OutPatientID); ;
             return Json("");
         }
         #endregion

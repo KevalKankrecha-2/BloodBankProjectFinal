@@ -99,13 +99,13 @@ namespace BloodBankProject.DAL
 
         #endregion
 
-        #region PR_BloodStock_UpdateByPKUserID
-        public void PR_BloodStock_UpdateByPKUserID(BloodBagModel modelBloodBag)
+        #region PR_BloodBag_UpdateByUserID
+        public void PR_BloodBag_UpdateByUserID(BloodBagModel modelBloodBag)
         {
             /*    try
                 {*/
             SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodStock_UpdateByPKUserID");
+            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_UpdateByUserID");
             sqlDB.AddInParameter(dbCMD, "BloodBagSerialNumber ", SqlDbType.Int, modelBloodBag.BloodBagSerialNumber);
             sqlDB.AddInParameter(dbCMD, "BloodGroupID ", SqlDbType.Int, modelBloodBag.BloodGroupID);
             sqlDB.AddInParameter(dbCMD, "DonorID", SqlDbType.Int, modelBloodBag.DonorID);
@@ -117,7 +117,6 @@ namespace BloodBankProject.DAL
             sqlDB.AddInParameter(dbCMD, "ExpireDate", SqlDbType.DateTime, modelBloodBag.ExpireDate);
             sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelBloodBag.Description);
             sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
-            sqlDB.AddInParameter(dbCMD, "ModificationDate", SqlDbType.DateTime, DBNull.Value);
             sqlDB.ExecuteNonQuery(dbCMD);
             /*  }
               catch (Exception ex)

@@ -697,7 +697,7 @@
 }
 @foreach (DataRow dr in Model.Rows)
 {
-            @:BloodBagsName.push("@dr["BloodGroupID"]");
+            @:BloodBagsName.push("@dr["BloodGroupName"]");
 }
         @*alert(BloodBagsCount);*@
     </script>

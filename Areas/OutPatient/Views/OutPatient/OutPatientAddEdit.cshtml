@@ -325,7 +325,6 @@
                                                 </p>
 
                                                 <select onchange="UpdateBloodBagStatus()" id="BloodBagsList" class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
-                                                    
                                                 </select>
                                             </div> <!-- end col -->
                                         </div>
@@ -407,9 +406,11 @@
                 </div>
             </div>
         </div>
+        
     </footer>
     <!-- end Footer -->
 </div>
+
 @section Scripts{
 
     <script>
@@ -419,63 +420,69 @@
             $("#OutPatientID").val(time);
         });
 
-            function GetTotalPrice() {
-                let Price = $("#PriceFillAuto").val();
-                let Quantity = $("#QuantiyCount").val();
-                $(".TotalPriceFill").val(Price * Quantity);
+        function GetTotalPrice() {
+            let Price = $("#PriceFillAuto").val();
+            let Quantity = $("#QuantiyCount").val();
+            $(".TotalPriceFill").val(Price * Quantity);
+        }
+
+        function GetInStockBloodBagAndPrice() {
+
+
+            BloodGroupID = $('.BloodGroupDropDown').find(":selected").val();
+            $("#BloodBagsList").empty();
+            $("#BloodBagsList").append($("<option></option>").val("").html("Select State"));
+            if (BloodGroupID !== "") {
+                $.ajax(
+                    {
+                        type: "POST",
+                        contentType: "application/json; charset:utf-8",
+                        url: "@Url.Action("BloodStock_SelectInStockBloodBagsAndPriceByBloodGroup", "OutPatient")" + "?&BloodGroupID=" + BloodGroupID,
+                        data: {},
+                        dataType: "json",
+                        success: function (Result) {
+                            console.log(Result);
+                            $.each(Result,
+                                function (key, value) {
+                                    $("#BloodBagsList").append($("<option></option>").val(value.bloodBagSerialNumber).html(value.bloodBagSerialNumber));
+                                    $("#PriceFillAuto").val(value.price);
+
+        @*  alert(value.bloodBagSerialNumber);
+                                    alert(value.price);*@
+                                         });
+                        },
+                        error: function (r) {
+                            alert("Error while loading dropdown.");
+                        }
+                    });
             }
+        }
 
-            function GetInStockBloodBagAndPrice() {
-                BloodGroupID = $('.BloodGroupDropDown').find(":selected").val();
-                $("#BloodBagsList").empty();
-                $("#BloodBagsList").append($("<option></option>").val("").html("Select State"));
-                if (BloodGroupID !== "")
-                {
-                 $.ajax(
-                 {
-                    type: "POST",
-                    contentType: "application/json; charset:utf-8",
-                    url: "@Url.Action("BloodStock_SelectInStockBloodBagsAndPriceByBloodGroup", "OutPatient")" + "?&BloodGroupID=" + BloodGroupID,
-                    data: {},
-                    dataType: "json",
-                         success: function (Result) {
-                             console.log(Result);
-                             $.each(Result,
-                                 function (key, value) {
-                                     $("#BloodBagsList").append($("<option></option>").val(value.bloodBagSerialNumber).html(value.bloodBagSerialNumber));
-                                     $("#PriceFillAuto").val(value.price);
+        function Demo() {
+            var select_button_text = $('#BloodBagList option:selected')
+                .toArray().map(item => item.text);
 
-                                   @*  alert(value.bloodBagSerialNumber);
-                                     alert(value.price);*@
-                                 });
-                    },
-                    error: function (r) {
-                        alert("Error while loading dropdown.");
-                    }
-                });
-                }
+            console.log(select_button_text);
+        }
+        function UpdateBloodBagStatus() {
+            let BloodBagIdForOut = $("#BloodBagsList").find(":selected").val();
+            let OutPatientID = $("#OutPatientID").val();
+            if (BloodBagIdForOut !== "") {
+                $.ajax(
+                    {
+                        type: "POST",
+                        contentType: "application/json; charset:utf-8",
+                        url: "@Url.Action("BloodStockUpdateStatusByBloodBagSerialNumber", "OutPatient")" + "?&BloodBagIdForOut=" + BloodBagIdForOut + "&OutPatientID" + OutPatientID,
+                        data: {},
+                        dataType: "json",
+                        success: function (Result) {
+                            alert(" outed..!!");
+                        },
+                        error: function (r) {
+                            alert("Error while loading dropdown.");
+                        }
+                    });
             }
-
-            function UpdateBloodBagStatus() {
-                let BloodBagIdForOut = $("#BloodBagsList").find(":selected").val();
-                let OutPatientID = $("#OutPatientID").val();
-                if (BloodBagIdForOut !== "")
-                {
-                 $.ajax(
-                 {
-                    type: "POST",
-                    contentType: "application/json; charset:utf-8",
-                         url: "@Url.Action("BloodStockUpdateStatusByBloodBagSerialNumber", "OutPatient")" + "?&BloodBagIdForOut=" + BloodBagIdForOut + "&OutPatientID" + OutPatientID,
-                    data: {},
-                    dataType: "json",
-                    success: function (Result) {
-                        alert("Done");
-                    },
-                    error: function (r) {
-                        alert("Error while loading dropdown.");
-                    }
-                });
-                }
         }
 
     </script>

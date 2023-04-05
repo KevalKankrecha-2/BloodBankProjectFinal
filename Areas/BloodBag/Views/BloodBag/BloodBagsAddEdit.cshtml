@@ -274,9 +274,21 @@
                                                 }
                                             </div> <!-- end col -->
                                             <div class="col-lg-6">
-                                                <label class="form-label font-weight-bold">Select Donor</label>
-                                                <select class="form-control select2" data-toggle="select2" id="DonorIDDropDown" asp-for="DonorID">
-                                                </select>
+                                                @if (ViewBag.DonorList == null)
+                                                {
+                                                 
+                                                    <label class="form-label font-weight-bold">Select Donor</label>
+                                                    <select class="form-control select2" data-toggle="select2" id="DonorIDDropDown" asp-for="DonorID">
+                                                    </select>
+                                                }
+                                                else
+                                                {
+                                                    <label class="form-label font-weight-bold">Select Donor</label>
+                                                    <select class="form-control select2" data-toggle="select2" id="DonorIDDropDown" asp-items="@(new SelectList(ViewBag.DonorList, "DonorID", "DonorName").ToList()) " asp-for="DonorID">
+                                                    </select>
+                                                }
+                                             
+                                               
                                             </div> <!-- end col -->
                                         </div>
                                         <!-- end row -->

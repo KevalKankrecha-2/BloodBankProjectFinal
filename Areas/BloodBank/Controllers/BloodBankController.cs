@@ -120,12 +120,12 @@ namespace BloodBank.Areas.BloodBank.Controllers
             if (modelBloodBank.BloodBankID == null)
             {
                 BloodBank_DAL dalBloodBank = new BloodBank_DAL();
-                /*dalBloodBank.PR_BloodBank_InsertByUserID(modelBloodBank);*/
+                dalBloodBank.PR_BloodBank_InsertByUserID(modelBloodBank);
             }
             else
             {
                 BloodBank_DAL dalBloodBank = new BloodBank_DAL();
-                /*dalBloodBank.PR_BloodBank_UpdateByPKUserID(modelBloodBank);*/
+                dalBloodBank.PR_BloodBank_UpdateByPKUserID(modelBloodBank);
             }
             return RedirectToAction("Index");
         }

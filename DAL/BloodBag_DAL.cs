@@ -10,13 +10,13 @@ namespace BloodBankProject.DAL
 {
     public class BloodBag_DAL : BloodBag_DALBASE
     {
-        #region PR_BloodStockCountBloodBagsByBloodGroup
-        public DataTable PR_BloodStockCountBloodBagsByBloodGroup()
+        #region PR_BloodBag_SelectCountBloodBagsByBloodGroup
+        public DataTable PR_BloodBag_SelectCountBloodBagsByBloodGroup()
         {
             /*try
             {*/
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodStockCountBloodBagsByBloodGroup");
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectCountBloodBagsByBloodGroup");
                 DataTable dtBloodBag = new DataTable();
                 using (IDataReader drBloodBag = sqlDB.ExecuteReader(dbCMD))
                 {

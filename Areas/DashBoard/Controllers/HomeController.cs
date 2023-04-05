@@ -13,7 +13,7 @@ namespace BloodBankProject.Areas.DashBoard.Controllers
         public IActionResult Index()
         {
             BloodBag_DAL dalBloodBag = new BloodBag_DAL();
-            DataTable dtBloodBagsCount = dalBloodBag.PR_BloodStockCountBloodBagsByBloodGroup();
+            DataTable dtBloodBagsCount = dalBloodBag.PR_BloodBag_SelectCountBloodBagsByBloodGroup();
             return View("Index", dtBloodBagsCount);
         }
     }

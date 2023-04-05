@@ -10,13 +10,13 @@ namespace BloodBankProject.DAL
 {
     public class OutPatient_DAL : OutPatient_DALBASE
     {
-        #region PR_BloodStock_SelectInStockBloodBagsAndPriceByBloodGroup
-        public DataTable PR_BloodStock_SelectInStockBloodBagsAndPriceByBloodGroup(int BloodGroupID)
+        #region PR_BloodBag_SelectInStockBloodBagsAndPriceByBloodGroup
+        public DataTable PR_BloodBag_SelectInStockBloodBagsAndPriceByBloodGroup(int BloodGroupID)
         {
             /* try
              {*/
             SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodStock_SelectInStockBloodBagsAndPriceByBloodGroup");
+            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectInStockBloodBagsAndPriceByBloodGroup");
             sqlDB.AddInParameter(dbCMD, "BloodGroupID", SqlDbType.Int, BloodGroupID);
             DataTable dtBloodGroupPrice = new DataTable();
             using (IDataReader drBloodGroupPrice = sqlDB.ExecuteReader(dbCMD))
@@ -33,14 +33,14 @@ namespace BloodBankProject.DAL
 
         #endregion
 
-        #region PR_BloodStockUpdateStatusByBloodBagSerialNumber
-        public void PR_BloodStockUpdateStatusByBloodBagSerialNumber(int BloodBagIdForOut, string OutPatientID)
+        #region PR_BloodBag_UpdateStatusByBloodBagSerialNumber
+        public void PR_BloodBag_UpdateStatusByBloodBagSerialNumber(int BloodBagIdForOut, int OutPatientID)
         {
             /*try
             {*/
             SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodStockUpdateStatusByBloodBagSerialNumber");
-            sqlDB.AddInParameter(dbCMD, "BloodBagSerialNumber", SqlDbType.Int, BloodBagIdForOut);
+            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_UpdateStatusByBloodBagSerialNumber");
+            sqlDB.AddInParameter(dbCMD, "BloodBagIdForOut", SqlDbType.Int, BloodBagIdForOut);
             sqlDB.AddInParameter(dbCMD, "OutPatientID", SqlDbType.NVarChar, OutPatientID);
             sqlDB.ExecuteNonQuery(dbCMD);
             /*}

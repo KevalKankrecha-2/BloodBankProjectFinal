@@ -100,8 +100,6 @@ namespace BloodBankProject.DAL
             sqlDB.AddInParameter(dbCMD, "OutDate", SqlDbType.DateTime, modelOutPatient.OutDate);
             sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelOutPatient.Description);
             sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
-            sqlDB.AddInParameter(dbCMD, "CreationDate", SqlDbType.DateTime, DBNull.Value);
-            sqlDB.AddInParameter(dbCMD, "ModificationDate", SqlDbType.DateTime, DBNull.Value);
             sqlDB.ExecuteNonQuery(dbCMD);
             /*}
             catch (Exception ex)
@@ -136,7 +134,6 @@ namespace BloodBankProject.DAL
                 sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelDonor.Description);
                 sqlDB.AddInParameter(dbCMD, "Image", SqlDbType.NVarChar, modelDonor.Image);
                 sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
-                sqlDB.AddInParameter(dbCMD, "ModificationDate", SqlDbType.DateTime, DBNull.Value);
                 sqlDB.ExecuteNonQuery(dbCMD);
             }
             catch (Exception ex)

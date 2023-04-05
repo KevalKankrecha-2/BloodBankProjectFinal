@@ -100,6 +100,8 @@ namespace BloodBankProject.Areas.BloodBag.Controllers
             #endregion
 
 
+
+
             if (BloodBagSerialNumber != null)
             {
                 DataTable dtBloodStockByPK = dalBloodBag.PR_BloodBag_SelectByPK(BloodBagSerialNumber);
@@ -118,6 +120,19 @@ namespace BloodBankProject.Areas.BloodBag.Controllers
                         modelBloodBag.VerificationDoctorRemarks = Convert.ToString(drBlooStockByPK["VerificationDoctorRemarks"]);
                         modelBloodBag.Description = Convert.ToString(drBlooStockByPK["Description"]);
 
+                        #region get Donor by blood group id
+                        dalDonor = new Donor_DAL();
+                        DataTable dtDonor = dalDonor.PR_Donor_SelectByBloodGroup(modelBloodBag.BloodGroupID);
+                        List<DonorDropDownModel> DonorDropDownListSelect = new List<DonorDropDownModel>();
+                        foreach (DataRow dr in dtDonor.Rows)
+                        {
+                            DonorDropDownModel dropdown = new DonorDropDownModel();
+                            dropdown.DonorID = Convert.ToInt32(dr["DonorID"]);
+                            dropdown.DonorName = Convert.ToString(dr["DonorName"]);
+                            DonorDropDownListSelect.Add(dropdown);
+                        }
+                        ViewBag.DonorList = DonorDropDownListSelect;
+                        #endregion
                     }
                 }
                 #endregion
@@ -133,7 +148,7 @@ namespace BloodBankProject.Areas.BloodBag.Controllers
             BloodBag_DAL dalBloodBag = new BloodBag_DAL();
             if (modelBloodBag.BloodBagSerialNumber != null)
             {
-                dalBloodBag.PR_BloodStock_UpdateByPKUserID(modelBloodBag);
+                dalBloodBag.PR_BloodBag_UpdateByUserID(modelBloodBag);
             }
             else
             {
