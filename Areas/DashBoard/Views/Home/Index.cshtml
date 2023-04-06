@@ -353,15 +353,96 @@
                                     <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
                                 </div>
                             </div>
-                            <h4 class="header-title">Sessions by country</h4>
+                            <h4 class="header-title">Total Upcoming Blood Bag of Particular Blood Group</h4>
 
                             <div class="row">
-                                <div class="col-lg-8">
-                                    <div id="world-map-markers" class="mt-3 mb-3" style="height: 300px">
+
+                                <div class="col-lg-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Pie Chart</h5>
+
+                                            <!-- Pie Chart -->
+                                            <div id="pieChart"></div>
+
+                                            <script>
+                                                        let BloodBagsCount = [];
+                                                        let BloodBagsName = [];
+                                                @foreach (DataRow dr in Model.Rows)
+                                                {
+                                                    @:BloodBagsCount.push("@dr["TotalBags"]");
+                                                }
+                                                @foreach (DataRow dr in Model.Rows)
+                                                {
+                                                    @:BloodBagsName.push("@dr["BloodGroupName"]");
+                                                }
+                                                document.addEventListener("DOMContentLoaded", () => {
+                                                    new ApexCharts(document.querySelector("#pieChart"), {
+                                                        series: [1,2,1,5,3,2,1,1],
+                                                        chart: {
+                                                            height: 350,
+                                                            type: 'pie',
+                                                            toolbar: {
+                                                                show: true
+                                                            }
+                                                        },
+                                                        labels: BloodBagsName
+                                                    }).render();
+                                                });
+                                            </script>
+                                            <!-- End Pie Chart -->
+
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4" dir="ltr">
-                                    <div id="country-chart" class="apex-charts" data-colors="#727cf5"></div>
+
+                                <div class="col-lg-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Radial Bar Chart</h5>
+
+                                            <!-- Radial Bar Chart -->
+                                            <div id="radialBarChart"></div>
+
+                                            <script>
+                                                document.addEventListener("DOMContentLoaded", () => {
+                                                    new ApexCharts(document.querySelector("#radialBarChart"), {
+                                                        series: [44, 55, 67, 83],
+                                                        chart: {
+                                                            height: 350,
+                                                            type: 'radialBar',
+                                                            toolbar: {
+                                                                show: true
+                                                            }
+                                                        },
+                                                        plotOptions: {
+                                                            radialBar: {
+                                                                dataLabels: {
+                                                                    name: {
+                                                                        fontSize: '22px',
+                                                                    },
+                                                                    value: {
+                                                                        fontSize: '16px',
+                                                                    },
+                                                                    total: {
+                                                                        show: true,
+                                                                        label: 'Total',
+                                                                        formatter: function (w) {
+                                                                            // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
+                                                                            return 249
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],
+                                                    }).render();
+                                                });
+                                            </script>
+                                            <!-- End Radial Bar Chart -->
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div> <!-- end card-body-->
@@ -675,154 +756,4 @@
     <!-- end Footer -->
 
 </div>
-@section Scripts{
-    <script type="text/javascript">
-        let BloodBagsCount = [];
-        let BloodBagsName = [];
-        let randomcolor = [];
-
-        let a ="@Model.Rows.Count";
-        for (var i = 1; i < a;i++) {
-            let maxVal = 0xFFFFFF; // 16777215
-            let randomNumber = Math.random() * maxVal;
-            randomNumber = Math.floor(randomNumber);
-            randomNumber = randomNumber.toString(16);
-            let randColor = '#'+randomNumber.padStart(6, 0);
-            randomcolor.push(randColor);
-
-        }
-@foreach (DataRow dr in Model.Rows)
-{
-    @:BloodBagsCount.push("@dr["TotalBags"]");
-}
-@foreach (DataRow dr in Model.Rows)
-{
-            @:BloodBagsName.push("@dr["BloodGroupName"]");
-}
-        @*alert(BloodBagsCount);*@
-    </script>
-
-
-    <script type="text/babel">
-
-           const bloodbagscount = BloodBagsCount.map(each=>{
-                return (
-                  each
-                )
-              });
-         const bloodgroup = BloodBagsName.map(each=>{
-                return (
-                  each
-                )
-              });
-          const  randomc = randomcolor.map(eacha=>{
-                return (
-                  eacha
-                )
-              });
-        class ApexChart extends React.Component {
-          constructor(props) {
-            super(props);
-
-            this.state = {
-
-              series: [{
-                data: bloodbagscount
-              }],
-              options: {
-                chart: {
-                  type: 'bar',
-                  height: 380
-                },
-                plotOptions: {
-                  bar: {
-                    barHeight: '100%',
-                    distributed: true,
-                    horizontal: true,
-                    dataLabels: {
-                      position: 'bottom'
-                    },
-                  }
-                },
-                colors: randomc,
-                dataLabels: {
-                  enabled: true,
-                  textAnchor: 'start',
-                  style: {
-                    colors: ['#fff']
-                  },
-                  formatter: function (val, opt) {
-                    console.log(opt);
-                    return   val
-                  },
-                  offsetX: 0,
-                  dropShadow: {
-                    enabled: true
-                  }
-                },
-                stroke: {
-                  width: 1,
-                  colors: ['#fff']
-                },
-                xaxis: {
-                  categories: bloodgroup,
-                },
-                yaxis: {
-                  labels: {
-                    show: false
-                  }
-                },
-                title: {
-                    text: 'Custom DataLabels',
-                    align: 'center',
-                    floating: true
-                },
-                subtitle: {
-                    text: 'Category Names as DataLabels inside bars',
-                    align: 'center',
-                },
-                tooltip: {
-                  theme: 'dark',
-                  x: {
-                    show: false
-                  },
-                  y: {
-                    title: {
-                      formatter: function () {
-                        return ''
-                      }
-                    }
-                  }
-                }
-              },
-
-
-            };
-          }
-
-
-
-          render() {
-            return (
-              <div>
-                <div id="chart">
-                  <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height={380} />
-                </div>
-                <div id="html-dist"></div>
-              </div>
-            );
-          }
-        }
-
-        const domContainer = document.querySelector('#app');
-        ReactDOM.render(React.createElement(ApexChart), domContainer);
-    </script>
-
-
-
-
-
-
-
-}
-
+@section Scripts{}
