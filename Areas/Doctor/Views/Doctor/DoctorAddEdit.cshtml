@@ -259,7 +259,7 @@
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="tab-pane show active" id="typeahead-preview">
-                                    <h4 class="page-title">Add/Edit Doctor</h4>
+                                    <h4 class="page-title mb-3">Add/Edit Doctor</h4>
                                     <form enctype="multipart/form-data" method="post" asp-area="Doctor" asp-controller="Doctor" asp-action="Save">
 
                                         @Html.HiddenFor(x => x.DoctorID)
@@ -267,6 +267,7 @@
                                             <div class="col-lg-6">
                                                 @if (ViewBag.StateDropDownList != null)
                                                 {
+                                                    <label class="form-label font-weight-bold">Select State</label>
                                                     <select onchange="fnOnStateChange();" class="form-control select2" data-toggle="select2" name="StateID" asp-items="@(new SelectList(ViewBag.StateDropDownList, "StateID", "StateName").ToList()) " asp-for="StateID">
                                                         @*Here First argument Country ID Should Be Consider as Values and second argument CountryName as html that is diaplay in list*@
                                                         <option value="0">Select State</option>
@@ -274,6 +275,7 @@
                                                 }
                                             </div> <!-- end col -->
                                             <div class="col-lg-6">
+                                                <label class="form-label font-weight-bold">Select City</label>
                                                 <select class="form-control select2" data-toggle="select2" name="CityID" asp-items="@(new SelectList(ViewBag.CityDropDownList, "CityID", "CityName").ToList()) " asp-for="CityID">
                                                     <option value="0">Select City</option>
                                                 </select>
