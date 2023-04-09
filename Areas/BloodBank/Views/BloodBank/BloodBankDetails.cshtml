@@ -122,7 +122,7 @@
 
                                                 <h4 class="mt-1 mb-1 text-white">@Model.Rows[0]["BloodBankName"]</h4>
 
-                                             
+
                                             </div>
                                         </div>
                                     </div>
@@ -131,12 +131,10 @@
                                 <div class="col-sm-4">
                                     <div class="text-center mt-sm-0 mt-3 text-sm-end">
                                         <form asp-area="BloodBank" asp-controller="BloodBank" asp-action="Add">
-                                            <button type="submit" class="btn btn-light">
-                                                <input type="hidden" name="BloodBankID" value=@Model.Rows[0]["BloodBankID"]>
-                                                <button type="submit" asp-area="BloodBank" asp-controller="BloodBank" asp-action="Add"><i class="mdi mdi-account-edit me-1"></i> Edit Profile</button>
-                                            </button>
+                                            <input type="hidden" name="BloodBankID" value=@Model.Rows[0]["BloodBankID"]>
+                                            <button type="submit" class="btn" style="background-color:white" asp-area="BloodBank" asp-controller="BloodBank" asp-action="Add"><i class="mdi mdi-account-edit me-1"></i> Edit Profile</button>
                                         </form>
-                                        
+
                                     </div>
                                 </div> <!-- end col-->
                             </div> <!-- end row -->
@@ -169,7 +167,7 @@
                                 <p class="text-muted"><strong>Location :</strong> <span class="ms-2">@Model.Rows[0]["StateName"]</span></p>
                                 <p class="text-muted"><strong>Location :</strong> <span class="ms-2">@Model.Rows[0]["CityName"]</span></p>
 
-                               
+
 
                             </div>
                         </div>

@@ -26,8 +26,8 @@ namespace BloodBankProject.DAL
                 sqlDB.AddInParameter(dbCMD, "Address", SqlDbType.NVarChar, modelBloodBank.Address);
                 sqlDB.AddInParameter(dbCMD, "Email", SqlDbType.NVarChar, modelBloodBank.Email);
                 sqlDB.AddInParameter(dbCMD, "EastablishmentDate", SqlDbType.DateTime, modelBloodBank.EstablishmentDate);
-                sqlDB.AddInParameter(dbCMD, "Latitude", SqlDbType.Decimal, modelBloodBank.Latitude);
-                sqlDB.AddInParameter(dbCMD, "Longtitude", SqlDbType.Decimal, modelBloodBank.Longtitude);
+                sqlDB.AddInParameter(dbCMD, "Latitude", SqlDbType.NVarChar, modelBloodBank.Latitude);
+                sqlDB.AddInParameter(dbCMD, "Longtitude", SqlDbType.NVarChar, modelBloodBank.Longtitude);
                 sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelBloodBank.Description);
                 sqlDB.AddInParameter(dbCMD, "Image", SqlDbType.NVarChar, modelBloodBank.Image);
                 sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
@@ -57,8 +57,8 @@ namespace BloodBankProject.DAL
             sqlDB.AddInParameter(dbCMD, "Address", SqlDbType.NVarChar, modelBloodBank.Address);
             sqlDB.AddInParameter(dbCMD, "Email", SqlDbType.NVarChar, modelBloodBank.Email);
             sqlDB.AddInParameter(dbCMD, "EstablishmentDate", SqlDbType.DateTime, modelBloodBank.EstablishmentDate);
-            sqlDB.AddInParameter(dbCMD, "Latitude", SqlDbType.Decimal, modelBloodBank.Latitude);
-            sqlDB.AddInParameter(dbCMD, "Longtitude", SqlDbType.Decimal, modelBloodBank.Longtitude);
+            sqlDB.AddInParameter(dbCMD, "Latitude", SqlDbType.NVarChar, modelBloodBank.Latitude);
+            sqlDB.AddInParameter(dbCMD, "Longtitude", SqlDbType.NVarChar, modelBloodBank.Longtitude);
             sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelBloodBank.Description);
             sqlDB.AddInParameter(dbCMD, "Image", SqlDbType.NVarChar, modelBloodBank.Image);
             sqlDB.AddInParameter(dbCMD, "ModificationDate", SqlDbType.DateTime, DBNull.Value);
