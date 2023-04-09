@@ -34,14 +34,14 @@ namespace BloodBankProject.DAL
         #endregion
 
         #region PR_BloodBag_UpdateStatusByBloodBagSerialNumber
-        public void PR_BloodBag_UpdateStatusByBloodBagSerialNumber(int BloodBagIdForOut, string OutPatientID)
+        public void PR_BloodBag_UpdateStatusByBloodBagSerialNumber(int BloodBagIdForOut, int OutPatientID)
         {
             /*try
             {*/
             SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
             DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_UpdateStatusByBloodBagSerialNumber");
             sqlDB.AddInParameter(dbCMD, "BloodBagIdForOut", SqlDbType.Int, BloodBagIdForOut);
-            sqlDB.AddInParameter(dbCMD, "OutPatientID", SqlDbType.NVarChar, OutPatientID);
+            sqlDB.AddInParameter(dbCMD, "OutPatientID", SqlDbType.Int, OutPatientID);
             sqlDB.ExecuteNonQuery(dbCMD);
             /*}
             catch (Exception ex)

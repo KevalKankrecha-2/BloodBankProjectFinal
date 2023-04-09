@@ -110,8 +110,16 @@ namespace BloodBankProject.Areas.OutPatient.Controllers
         [HttpPost]
         public IActionResult Save(OutPatientModel modelOutPatient)
         {
+
             OutPatient_DAL dalOutPatient = new OutPatient_DAL();
-            dalOutPatient.PR_OutPatient_InsertByUserID(modelOutPatient);
+            DataTable dt=dalOutPatient.PR_OutPatient_InsertByUserID(modelOutPatient);
+            int OutPatientID = Convert.ToInt32(dt.Rows[0]["OutPatientID"]);
+            //it outpatientid is ehich outpatient is inserted so bloodbag aa outpatient ne api ene mate status change kari nakhvanu tena mate niche ni loop
+            for (int i = 0; i < modelOutPatient.OutBloodBags.Count; i++)
+            {
+                int BloodBagsIDForOut = modelOutPatient.OutBloodBags[i];
+                dalOutPatient.PR_BloodBag_UpdateStatusByBloodBagSerialNumber(BloodBagsIDForOut, OutPatientID);
+            }
             return RedirectToAction("Index");
         }
         #endregion
@@ -141,18 +149,6 @@ namespace BloodBankProject.Areas.OutPatient.Controllers
             return Json(vModel);
         }
         #endregion
-
-        #region Update Blood Bag Status
-        public IActionResult BloodStockUpdateStatusByBloodBagSerialNumber(int BloodBagIdForOut,string OutPatientID)
-        {
-            OutPatient_DAL dalOutPatient= new OutPatient_DAL();
-            dalOutPatient.PR_BloodBag_UpdateStatusByBloodBagSerialNumber(BloodBagIdForOut, OutPatientID); ;
-            return Json("");
-        }
-        #endregion
-
-
-
 
 
     }

@@ -262,7 +262,7 @@
                                     <h4 class="page-title">Add/Edit OutPatient</h4>
                                     <form enctype="multipart/form-data" method="post" asp-area="OutPatient" asp-controller="OutPatient" asp-action="Save">
 
-                                        <input type="text" asp-for="OutPatientID" class="OutPatientID" placeholder="ID">
+                                        
 
 
                                         <div class="row">
@@ -324,7 +324,7 @@
                                                     Select Multiple Blood Bags Over Here
                                                 </p>
 
-                                                <select id="BloodBagsList" class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                                <select id="BloodBagsList" class="select2 form-control select2-multiple" data-toggle="select2" asp-for="OutBloodBags" multiple="multiple" data-placeholder="Choose ...">
                                                 </select>
                                             </div> <!-- end col -->
                                         </div>
@@ -415,10 +415,6 @@
 
     <script>
 
-        $(document).ready(function () {
-            var time = new Date().getTime();
-            $("#OutPatientID").val(time);
-        });
 
         function GetTotalPrice() {
             let Price = $("#PriceFillAuto").val();
@@ -453,34 +449,6 @@
             }
         }
 
-        function UpdateBloodBagStatus() {
-            var selected = [];
-            $('#BloodBagsList :selected').each(function () {
-                selected[$(this).val()] = $(this).text();
-            });
-            let flag = true;
-            for (var i = 0; i < selected.length; i++) {
-                if (selected[i] != null) {
-                    let OutPatientID = $(".OutPatientID").val();
-                    let BloodBagIdForOut = selected[i];
-                    $.ajax(
-                        {
-                            type: "POST",
-                            contentType: "application/json; charset:utf-8",
-                            url: "@Url.Action("BloodStockUpdateStatusByBloodBagSerialNumber", "OutPatient")" + "?&BloodBagIdForOut=" + BloodBagIdForOut + "&OutPatientID=" + OutPatientID,
-                            data: {},
-                            dataType: "json",
-                            success: function (Result) {
-                            },
-                            error: function (r) {
-                                flag = false;
-                                alert("Some thing gone wrong");
-
-                            }
-                        });
-                }
-            }
-            return flag;
-        }
+      
     </script>
 }

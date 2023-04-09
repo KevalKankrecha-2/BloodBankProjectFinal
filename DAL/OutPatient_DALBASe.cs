@@ -83,13 +83,12 @@ namespace BloodBankProject.DAL
         #endregion
 
         #region PR_OutPatient_InsertByUserID
-        public void PR_OutPatient_InsertByUserID(OutPatientModel modelOutPatient)
+        public DataTable PR_OutPatient_InsertByUserID(OutPatientModel modelOutPatient)
         {
             /*try
             {*/
             SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
             DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_OutPatient_InsertByUserID");
-            sqlDB.AddInParameter(dbCMD, "OutPatientID", SqlDbType.NVarChar, modelOutPatient.OutPatientID);
             sqlDB.AddInParameter(dbCMD, "OutPatientName", SqlDbType.NVarChar, modelOutPatient.OutPatientName);
             sqlDB.AddInParameter(dbCMD, "ContactNumber", SqlDbType.NVarChar, modelOutPatient.ContactNumber);
             sqlDB.AddInParameter(dbCMD, "BloodGroupID", SqlDbType.Int, modelOutPatient.BloodGroupID); ;
@@ -101,7 +100,12 @@ namespace BloodBankProject.DAL
             sqlDB.AddInParameter(dbCMD, "OutDate", SqlDbType.DateTime, modelOutPatient.OutDate);
             sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelOutPatient.Description);
             sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
-            sqlDB.ExecuteNonQuery(dbCMD);
+            DataTable dtOutPatient = new DataTable();
+            using (IDataReader drOutPatient = sqlDB.ExecuteReader(dbCMD))
+            {
+                dtOutPatient.Load(drOutPatient);
+            }
+            return dtOutPatient;
             /*}
             catch (Exception ex)
             {

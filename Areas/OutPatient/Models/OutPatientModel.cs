@@ -28,6 +28,8 @@ namespace BloodBankProject.Areas.OutPatient.Models
 
         public string Description { get; set; }
 
+        public List<Int32> OutBloodBags { get; set; }
+
     }
 
     public class GetAvailableBloodBagsAndPrice
@@ -37,9 +39,4 @@ namespace BloodBankProject.Areas.OutPatient.Models
         public decimal Price { get; set; }
     }
 
-    public class OutBloodBags
-    {
-        public int BloodBagSerialNumber { get; set; }
-
-    }
 }
