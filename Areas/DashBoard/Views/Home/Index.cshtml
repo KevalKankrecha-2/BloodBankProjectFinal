@@ -1,8 +1,8 @@
 ﻿@{
     ViewData["Title"] = "BloodBank-DashBoard";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
-    
+
+
 }
 @using BloodBankProject.BAL;
 @using System.Data;
@@ -279,7 +279,7 @@
                         </div> <!-- end card-body-->
                     </div>
                 </div> <!-- end col -->
-                   <div class="col-xl-3 col-lg-4">
+                <div class="col-xl-3 col-lg-4">
                     <div class="card tilebox-one">
                         <div class="card-body">
                             <i class='uil uil-users-alt float-end'></i>
@@ -292,7 +292,7 @@
                         </div> <!-- end card-body-->
                     </div>
                 </div> <!-- end col -->
-                   <div class="col-xl-3 col-lg-4">
+                <div class="col-xl-3 col-lg-4">
                     <div class="card tilebox-one">
                         <div class="card-body">
                             <i class='uil uil-users-alt float-end'></i>
@@ -337,48 +337,49 @@
                                     <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
                                 </div>
                             </div>
-                            <h4 class="header-title">Total Upcoming Blood Bag of Particular Blood Group</h4>
+
 
                             <div class="row">
-
+                                @* Dynamic Pie Chart*@
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h5 class="card-title">Pie Chart</h5>
+                                            <h4 class="header-title">Available Blood Stock</h4>
 
                                             <!-- Pie Chart -->
                                             <div id="pieChart"></div>
 
                                             <script>
-                                                        let BloodBagsCount = [];
-                                                        let BloodBagsName = [];
+                                                let BloodBagsCount = [];
+                                                let BloodBagsName = [];
                                                 @foreach (DataRow dr in Model.Rows)
                                                 {
-                                                    @:BloodBagsCount.push("@dr["TotalBags"]");
+                                                    @:BloodBagsCount.push(parseInt("@dr["TotalBags"]"));
                                                 }
                                                 @foreach (DataRow dr in Model.Rows)
                                                 {
                                                     @:BloodBagsName.push("@dr["BloodGroupName"]");
                                                 }
-                                                document.addEventListener("DOMContentLoaded", () => {
-                                                    new ApexCharts(document.querySelector("#pieChart"), {
-                                                        series: [1,2,1,5,3,2,1,1],
-                                                        chart: {
-                                                            height: 350,
-                                                            type: 'pie',
-                                                            toolbar: {
-                                                                show: true
-                                                            }
-                                                        },
-                                                        labels: BloodBagsName
-                                                    }).render();
-                                                });
+                                                    document.addEventListener("DOMContentLoaded", () => {
+                                                        new ApexCharts(document.querySelector("#pieChart"), {
+                                                            series: BloodBagsCount,
+                                                            chart: {
+                                                                height: 350,
+                                                                type: 'pie',
+                                                                toolbar: {
+                                                                    show: true
+                                                                }
+                                                            },
+                                                            labels: BloodBagsName
+                                                        }).render();
+                                                    });
                                             </script>
                                             <!-- End Pie Chart -->
 
                                         </div>
                                     </div>
                                 </div>
+                                @*#end Dynamic Pie Chart *@
 
                                 <div class="col-lg-6">
                                     <div class="card">
@@ -429,7 +430,6 @@
                                     </div>
                                 </div>
 
-
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div class="card-body">
@@ -471,6 +471,8 @@
                                     </div>
                                 </div>
 
+
+
                             </div>
                         </div> <!-- end card-body-->
                     </div> <!-- end card-->
@@ -478,8 +480,8 @@
             </div>
             <!-- end row -->
 
-          
-          
+
+
 
 
         </div>
@@ -507,4 +509,5 @@
     <!-- end Footer -->
 
 </div>
-@section Scripts{}
+@section Scripts{
+}

@@ -5,7 +5,7 @@ using BloodBankProject.BAL;
 
 namespace BloodBankProject.Areas.DashBoard.Controllers
 {
-    [CheckAccess]
+    /*[CheckAccess]*/
     [Area("DashBoard")]
     [Route("DashBoard/[controller]/[action]")]
     public class HomeController : Controller

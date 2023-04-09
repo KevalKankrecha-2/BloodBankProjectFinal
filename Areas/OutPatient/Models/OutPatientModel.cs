@@ -36,4 +36,10 @@ namespace BloodBankProject.Areas.OutPatient.Models
 
         public decimal Price { get; set; }
     }
+
+    public class OutBloodBags
+    {
+        public int BloodBagSerialNumber { get; set; }
+
+    }
 }
