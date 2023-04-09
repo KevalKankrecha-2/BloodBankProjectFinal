@@ -92,7 +92,6 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item active">@Model.Rows[0]["BloodBankName"]</li>
-
                                 <li class="breadcrumb-item"><a asp-area="DashBoard" asp-controller="Home" asp-action="Index">Admin Panel</a></li>
                                 <li class="breadcrumb-item active">Blood Bank Details</li>
                             </ol>
@@ -103,100 +102,93 @@
             </div>
             <!-- end page title -->
 
-
-            <div class="row">
-                <div class="col-sm-12">
-                    <!-- Profile -->
-                    <div class="card bg-primary">
-                        <div class="card-body profile-user-box">
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <div class="avatar-lg">
-                                                <img src="@Url.Content(Model.Rows[0]["Image"].ToString())" alt="" class="rounded-circle img-thumbnail">
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div>
-
-                                                <h4 class="mt-1 mb-1 text-white">@Model.Rows[0]["BloodBankName"]</h4>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> <!-- end col-->
-
-                                <div class="col-sm-4">
-                                    <div class="text-center mt-sm-0 mt-3 text-sm-end">
-                                        <form asp-area="BloodBank" asp-controller="BloodBank" asp-action="Add">
-                                            <input type="hidden" name="BloodBankID" value=@Model.Rows[0]["BloodBankID"]>
-                                            <button type="submit" class="btn" style="background-color:white" asp-area="BloodBank" asp-controller="BloodBank" asp-action="Add"><i class="mdi mdi-account-edit me-1"></i> Edit Profile</button>
-                                        </form>
-
-                                    </div>
-                                </div> <!-- end col-->
-                            </div> <!-- end row -->
-
-                        </div> <!-- end card-body/ profile-user-box-->
-                    </div><!--end profile/ card -->
-                </div> <!-- end col-->
-            </div>
-            <!-- end row -->
-
-
             <div class="row">
                 <div class="col-xl-4">
-                    <!-- Personal-Information -->
+
                     <div class="card">
-                        <div class="card-body">
-                            <h4 class="header-title mt-0 mb-3">More Information</h4>
-                            <p class="text-muted font-13">
-                                @Model.Rows[0]["Description"]
-                            </p>
-
-                            <hr>
-
-                            <div class="text-start">
-
-                                <p class="text-muted"><strong>Mobile :</strong><span class="ms-2">@Model.Rows[0]["ContactNumber"]</span></p>
-
-                                <p class="text-muted"><strong>Email :</strong> <span class="ms-2">@Model.Rows[0]["Email"]</span></p>
-
-                                <p class="text-muted"><strong>Location :</strong> <span class="ms-2">@Model.Rows[0]["StateName"]</span></p>
-                                <p class="text-muted"><strong>Location :</strong> <span class="ms-2">@Model.Rows[0]["CityName"]</span></p>
-
-
-
-                            </div>
+                        <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                            <img src="@Url.Content(Model.Rows[0]["Image"].ToString())" alt="" class="rounded-circle img-thumbnail">
+                            <h4 class="mt-1 mb-1" style="font-size:30px">@Model.Rows[0]["BloodBankName"]</h4>
+                          @*  <div class="social-links mt-2">
+                                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                            </div>*@
                         </div>
                     </div>
-                    <!-- Personal-Information -->
 
-                </div> <!-- end col-->
+                </div>
 
                 <div class="col-xl-8">
 
-                    <!-- Chart-->
                     <div class="card">
-                        <div class="card-body">
-                            <h4 class="header-title mb-3">Orders & Revenue</h4>
-                            <div dir="ltr">
-                                <div style="height: 260px;" class="chartjs-chart">
-                                    <canvas id="high-performing-product"></canvas>
+                        <div class="card-body pt-3">
+                            <!-- Bordered Tabs -->
+                            <ul class="nav nav-tabs nav-tabs-bordered">
+
+                                <li class="nav-item">
+                                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+                                </li>
+
+                                <li class="nav-item">
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content pt-2">
+
+                                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                    <h5 class="card-title">About</h5>
+
+                                    <p class="text-muted font-13">
+                                        @Model.Rows[0]["Description"]
+                                    </p>
+                                    <h5 class="card-title">Profile Details</h5>
+
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label ">Full Name:</div>
+                                        <div class="col-lg-9 col-md-8"> @Model.Rows[0]["BloodBankName"]</div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label">Mobile Number:</div>
+                                        <div class="col-lg-9 col-md-8">@Model.Rows[0]["ContactNumber"]</div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label">Email:</div>
+                                        <div class="col-lg-9 col-md-8">@Model.Rows[0]["Email"]</div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label">State:</div>
+                                        <div class="col-lg-9 col-md-8">@Model.Rows[0]["StateName"]</div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label">City:</div>
+                                        <div class="col-lg-9 col-md-8">@Model.Rows[0]["CityName"]</div>
+                                    </div>
+
                                 </div>
-                            </div>
+
+                                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                                    <!-- Profile Edit Form -->
+                                    
+                                    <!-- End Profile Edit Form -->
+                                </div>
+                            </div><!-- End Bordered Tabs -->
+
                         </div>
                     </div>
-                    <!-- End Chart-->
-
 
                 </div>
-                <!-- end col -->
-
             </div>
-            <!-- end row -->
+
+
+
 
         </div> <!-- container -->
 
@@ -206,7 +198,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                    <script>document.write(new Date().getFullYear())</script> © CopyRights Reserved
+                    By Keval Kankrecha
                 </div>
                 <div class="col-md-6">
                     <div class="text-md-end footer-links d-none d-md-block">
