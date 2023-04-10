@@ -81,14 +81,14 @@ namespace BloodBankProject.Areas.City.Controllers
             LOC_DAL dalLOC = new LOC_DAL();
             if (modelCity.CityID == null)
             {
-                if(modelCity.StateID !=0 && modelCity.CityName!=null && modelCity.CityCode != null)
+                if(modelCity.StateID !=0 && modelCity.CityName!=null)
                 {
                     dalLOC.PR_City_InsertByUserID(modelCity);
                 }
             }
             else
             {
-                if (modelCity.StateID != 0 && modelCity.CityName != null && modelCity.CityCode != null)
+                if (modelCity.StateID != 0 && modelCity.CityName != null)
                 {
                     dalLOC.PR_City_UpdateByPKUserID(modelCity);
                 }

@@ -187,21 +187,21 @@ namespace BloodBankProject.DAL
         #region PR_City_InsertByUserID
         public void PR_City_InsertByUserID(CityModel modelCity)
         {
-            try
-            {
+           /* try
+            {*/
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_City_InsertByUserID");
                 sqlDB.AddInParameter(dbCMD, "CityName", SqlDbType.NVarChar, modelCity.CityName.Trim());
-                sqlDB.AddInParameter(dbCMD, "CityCode", SqlDbType.NVarChar, modelCity.CityCode.Trim());
+                sqlDB.AddInParameter(dbCMD, "CityCode", SqlDbType.NVarChar, modelCity.CityCode);
                 sqlDB.AddInParameter(dbCMD, "StateID", SqlDbType.Int, modelCity.StateID);
                 sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelCity.Description);
                 sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
 
                 sqlDB.ExecuteNonQuery(dbCMD);
-            }
+           /* }
             catch (Exception ex)
             {
-            }
+            }*/
         }
         #endregion
 
@@ -213,7 +213,7 @@ namespace BloodBankProject.DAL
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_City_UpdateByPKUserID");
                 sqlDB.AddInParameter(dbCMD, "CityName", SqlDbType.NVarChar, modelCity.CityName.Trim());
-                sqlDB.AddInParameter(dbCMD, "CityCode", SqlDbType.NVarChar, modelCity.CityCode.Trim());
+                sqlDB.AddInParameter(dbCMD, "CityCode", SqlDbType.NVarChar, modelCity.CityCode);
                 sqlDB.AddInParameter(dbCMD, "StateID", SqlDbType.Int, modelCity.StateID);
                 sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelCity.Description);
                 sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());

@@ -119,13 +119,15 @@
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Blood Group Name</label>
                                                     <input type="text" class="form-control" data-provide="typeahead" asp-for="BloodGroupName" placeholder="BloodGroup Name">
+                                                    <span asp-validation-for="BloodGroupName" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
 
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Blood Group Blood Bag Price</label>
-                                                    <input type="text" class="form-control" data-provide="typeahead" asp-for="Price" placeholder="BloodGroup Name">
+                                                    <input type="text" class="form-control" data-provide="typeahead" asp-for="Price" placeholder="Price">
+                                                    <span asp-validation-for="Price" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                         </div>

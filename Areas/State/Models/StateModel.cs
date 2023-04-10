@@ -1,5 +1,4 @@
-﻿
-
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BloodBankProject.Areas.State.Models
 {
@@ -7,11 +6,12 @@ namespace BloodBankProject.Areas.State.Models
     {
         public int? StateID { get; set; }
 
+        [Required(ErrorMessage = "Please Enter State Name")]
         public string StateName { get; set; }
 
-        public string StateCode { get; set; }
+        public string? StateCode { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         public DateTime CreationDate { get; set; }
 

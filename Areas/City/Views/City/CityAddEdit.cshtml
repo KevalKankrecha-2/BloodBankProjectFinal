@@ -116,9 +116,10 @@
                                             <div class="col-lg-12">
                                                 @if (ViewBag.StateDropDownList != null)
                                                 {
+                                                    <span asp-validation-for="StateID" class="text-danger"></span>
                                                     <select class="form-control select2" data-toggle="select2" name="StateID" asp-items="@(new SelectList(ViewBag.StateDropDownList, "StateID", "StateName").ToList()) " asp-for="StateID">
                                                         @*Here First argument Country ID Should Be Consider as Values and second argument CountryName as html that is diaplay in list*@
-                                                        <option value="0">Select State</option>
+                                                        <option value="" disabled selected>Select State</option>
                                                     </select>
                                                 }
                                             </div> <!-- end col -->
@@ -129,6 +130,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">City Name</label>
                                                     <input type="text" class="form-control" data-provide="typeahead" asp-for="CityName" placeholder="State Name">
+                                                    <span asp-validation-for="CityName" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
 
