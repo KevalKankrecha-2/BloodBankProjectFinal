@@ -119,8 +119,9 @@
                                                 {
                                                     <label class="form-label font-weight-bold">Select BloodGroup</label>
                                                     <select class="form-control select2 BloodGroupDropDown" data-toggle="select2" asp-items="@(new SelectList(ViewBag.BloodGroupDropDownList, "BloodGroupID", "BloodGroupName").ToList()) " asp-for="BloodGroupID" onchange="GetDonorByBloodGroup()">
-                                                        <option>Select BloodGroup</option>
+                                                        <option value="" selected disabled>Select BloodGroup</option>
                                                     </select>
+                                                    <span asp-validation-for="BloodGroupID" class="text-danger"></span>
                                                 }
                                             </div> <!-- end col -->
                                             <div class="col-lg-6">
@@ -129,7 +130,9 @@
 
                                                     <label class="form-label font-weight-bold">Select Donor</label>
                                                     <select class="form-control select2" data-toggle="select2" id="DonorIDDropDown" asp-for="DonorID">
+                                                        <option value="" selected disabled>Select Donor</option>
                                                     </select>
+                                                    <span asp-validation-for="DonorID" class="text-danger"></span>
                                                 }
                                                 else
                                                 {
@@ -167,7 +170,9 @@
                                                 {
                                                     <label class="form-label font-weight-bold">Verified By</label>
                                                     <select class="form-control select2" data-toggle="select2" asp-items="@(new SelectList(ViewBag.DoctorDropDownList, "DoctorID", "DoctorName").ToList()) " asp-for="VerifiedDoctorID">
+                                                        <option value="" selected disabled>Select Doctor</option>
                                                     </select>
+                                                    <span asp-validation-for="VerifiedDoctorID" class="text-danger"></span>
                                                 }
 
                                             </div><!-- end col -->
@@ -181,17 +186,6 @@
                                         </div>
                                         <!-- end row -->
 
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="mb-3">
-                                                    <label class="form-label font-weight-bold">Out PatientID</label>
-                                                    <select class="form-control select2" data-toggle="select2" asp-for="OutPatientID">
-                                                        <option value="InStock">Out Patient Nu Drop Down Ahi Avshe</option>
-                                                    </select>
-                                                </div>
-                                            </div> <!-- end col -->
-                                        </div>
-                                        <!-- end row -->
 
                                         <div class="row">
                                             <div class="col-lg-12">
@@ -247,6 +241,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @section Scripts{
     <script>
+        $(document).ready(function(){
+            first_date = new Date();
+            output_f = new Date(first_date.setDate(first_date.getDate() + 42)).toISOString().split('.');
+            output_s = output_f[0].split('T');
+            $('.ExpireDateFillAuto').val(output_s[0]);
+        });
+
         function date_chng() {
             first_date = new Date($('.DaonateDateFillAuto').val());
             output_f = new Date(first_date.setDate(first_date.getDate() + 42)).toISOString().split('.');
@@ -256,7 +257,7 @@
         function GetDonorByBloodGroup() {
             BloodGroupID = $('.BloodGroupDropDown').find(":selected").val();
             $("#DonorIDDropDown").empty();
-            $("#DonorIDDropDown").append($("<option></option>").val("").html("Select Donor"));
+            $("#DonorIDDropDown").append($("<option selected disabled></option>").val("").html("Select Donor"));
             if (BloodGroupID !== "") {
                 $.ajax(
                     {
