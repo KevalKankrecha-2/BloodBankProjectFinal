@@ -120,6 +120,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">OutPatient Name</label>
                                                     <input type="text" class="form-control" data-provide="typeahead" asp-for="OutPatientName" placeholder="Donor Name">
+                                                    <span asp-validation-for="OutPatientName" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                         </div>
@@ -138,8 +139,9 @@
                                                 {
                                                     <label class="form-label font-weight-bold">Select BloodGroup</label>
                                                     <select onchange="GetInStockBloodBagAndPrice()" class="form-control select2 BloodGroupDropDown" data-toggle="select2" name="BloodGroupID" asp-items="@(new SelectList(ViewBag.BloodGroupDropDownList, "BloodGroupID", "BloodGroupName").ToList()) " asp-for="BloodGroupID">
-                                                        <option value="0">Select BloodGroup</option>
+                                                        <option value="" selected disabled>Select BloodGroup</option>
                                                     </select>
+                                                    <span asp-validation-for="BloodGroupID" class="text-danger"></span>
                                                 }
                                             </div> <!-- end col -->
                                         </div>
@@ -150,12 +152,14 @@
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Price</label>
                                                     <input type="text" class="form-control" data-provide="typeahead" id="PriceFillAuto" asp-for="Price" placeholder="Price">
+                                                    <span asp-validation-for="Price" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                             <div class="col-lg-4">
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Quanity</label>
                                                     <input type="text" class="form-control" onkeyup="GetTotalPrice()" data-provide="typeahead" id="QuantiyCount" asp-for="Quantity" placeholder="Quanity ">
+                                                    <span asp-validation-for="Quantity" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                             <div class="col-lg-4">
@@ -186,7 +190,9 @@
                                                 {
                                                     <label class="form-label font-weight-bold">BloodCrossVerification By</label>
                                                     <select class="form-control select2" data-toggle="select2" asp-items="@(new SelectList(ViewBag.DoctorDropDownList, "DoctorID", "DoctorName").ToList()) " asp-for="BloodCrossVerifiedBy">
+                                                        <option value="" selected disabled>Select Doctor</option>
                                                     </select>
+                                                    <Span asp-validation-for="BloodCrossVerifiedBy" class="text-danger"></Span>
                                                 }
 
                                             </div><!-- end col -->
@@ -206,6 +212,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Contact Number</label>
                                                     <input type="text" class="form-control" asp-for="ContactNumber" placeholder="Contact Number">
+                                                    <span asp-validation-for="ContactNumber" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                         </div>
