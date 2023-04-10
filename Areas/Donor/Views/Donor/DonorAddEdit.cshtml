@@ -120,15 +120,16 @@
                                                 {
                                                     <label class="form-label font-weight-bold">Select State</label>
                                                     <select onchange="fnOnStateChange();" class="form-control select2" data-toggle="select2" name="StateID" asp-items="@(new SelectList(ViewBag.StateDropDownList, "StateID", "StateName").ToList()) " asp-for="StateID">
-                                                        @*Here First argument Country ID Should Be Consider as Values and second argument CountryName as html that is diaplay in list*@
-                                                        <option>Select State</option>
+                                                        <option value="" disabled selected>Select State</option>
                                                     </select>
+                                                    <span asp-validation-for="StateID" class="text-danger"></span>
                                                 }
                                             </div> <!-- end col -->
                                             <div class="col-lg-6">
                                                 <label class="form-label font-weight-bold">Select City</label>
                                                 <select class="form-control select2" data-toggle="select2" name="CityID" asp-items="@(new SelectList(ViewBag.CityDropDownList, "CityID", "CityName").ToList()) " asp-for="CityID">
                                                 </select>
+                                                <span asp-validation-for="CityID" class="text-danger"></span>
                                             </div> <!-- end col -->
                                         </div> <!-- end row -->
 
@@ -137,6 +138,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Donor Name</label>
                                                     <input type="text" class="form-control" data-provide="typeahead" asp-for="DonorName" placeholder="Donor Name">
+                                                    <span asp-validation-for="DonorName" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                         </div>
@@ -147,12 +149,14 @@
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Email Address</label>
                                                     <input type="email" class="form-control" data-provide="typeahead" asp-for="Email" placeholder="Email Address">
+                                                    <span asp-validation-for="Email" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Contact Number</label>
                                                     <input type="text" class="form-control" data-provide="typeahead" asp-for="ContactNumber" placeholder="Contact Number">
+                                                    <span asp-validation-for="ContactNumber" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                         </div>
@@ -184,6 +188,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Address</label>
                                                     <textarea class="form-control" asp-for="Address" placeholder="Address"></textarea>
+                                                    <span asp-validation-for="Address" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                         </div>
@@ -194,17 +199,20 @@
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Select Proff Type    </label>
                                                     <select class="form-control select2" data-toggle="select2" name="ProofType" asp-for="ProofType">
+                                                        <option value="" selected disabled>Select Proof Type</option>
                                                         <option value="Aadhar">Aadhar Card</option>
                                                         <option value="Licence">Licence</option>
                                                         <option value="Pan">Pan Card</option>
                                                         <option value="Election">Election Card</option>
                                                     </select>
+                                                    <span asp-validation-for="ProofType" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Proff Number</label>
-                                                    <input type="text" class="form-control" data-provide="typeahead" asp-for="ProofNumber" placeholder="Email Address">
+                                                    <input type="text" class="form-control" data-provide="typeahead" asp-for="ProofNumber" placeholder="Proof Number">
+                                                    <span asp-validation-for="ProofNumber" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                         </div>
@@ -215,18 +223,21 @@
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Pulse</label>
                                                     <input type="text" class="form-control" data-provide="typeahead" asp-for="Pulse" placeholder="Pulse">
+                                                    <span asp-validation-for="Pulse" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                             <div class="col-lg-4">
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">BP</label>
                                                     <input type="text" class="form-control" data-provide="typeahead" asp-for="BP" placeholder="BP">
+                                                    <span asp-validation-for="BP" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                             <div class="col-lg-4">
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Weight</label>
                                                     <input type="text" class="form-control" data-provide="typeahead" asp-for="Weight" placeholder="Weight">
+                                                    <span asp-validation-for="Weight" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                         </div>
@@ -244,8 +255,9 @@
                                                 {
                                                     <label class="form-label font-weight-bold">Select BloodGroup</label>
                                                     <select class="form-control select2" data-toggle="select2" name="BloodGroupID" asp-items="@(new SelectList(ViewBag.BloodGroupDropDownList, "BloodGroupID", "BloodGroupName").ToList()) " asp-for="BloodGroupID">
-                                                        <option value="0">Select BloodGroup</option>
+                                                        <option value="" disabled selected>Select BloodGroup</option>
                                                     </select>
+                                                    <span asp-validation-for="BloodGroupID" class="text-danger"></span>
                                                 }
                                             </div> <!-- end col -->
                                         </div>
