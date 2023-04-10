@@ -119,16 +119,17 @@
                                                 {
                                                     <label class="form-label font-weight-bold">Select State</label>
                                                     <select onchange="fnOnStateChange();" class="form-control select2" data-toggle="select2" name="StateID" asp-items="@(new SelectList(ViewBag.StateDropDownList, "StateID", "StateName").ToList()) " asp-for="StateID">
-                                                        @*Here First argument Country ID Should Be Consider as Values and second argument CountryName as html that is diaplay in list*@
-                                                        <option value="0">Select State</option>
+                                                        <option value="" disabled selected>Select State</option>
                                                     </select>
+                                                     <span asp-validation-for="StateID" class="text-danger"></span>
                                                 }
                                             </div> <!-- end col -->
                                             <div class="col-lg-6">
                                                 <label class="form-label font-weight-bold">Select City</label>
                                                 <select class="form-control select2" data-toggle="select2" name="CityID" asp-items="@(new SelectList(ViewBag.CityDropDownList, "CityID", "CityName").ToList()) " asp-for="CityID">
-                                                    <option value="0">Select City</option>
+                                                    <option value="" disabled selected>Select City</option>
                                                 </select>
+                                                 <span asp-validation-for="CityID" class="text-danger"></span>
                                             </div> <!-- end col -->
                                         </div> <!-- end row -->
 
@@ -137,6 +138,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Doctor Name</label>
                                                     <input type="text" class="form-control" data-provide="typeahead" asp-for="DoctorName" placeholder="Doctor Name">
+                                                    <span asp-validation-for="DoctorName" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                         </div>
@@ -147,12 +149,14 @@
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Email Address</label>
                                                     <input type="email" class="form-control" data-provide="typeahead" asp-for="Email" placeholder="Email Address">
+                                                    <span asp-validation-for="Email" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label font-weight-bold">Contact Number</label>
                                                     <input type="text" class="form-control" data-provide="typeahead" asp-for="ContactNumber" placeholder="Contact Number">
+                                                    <span asp-validation-for="ContactNumber" class="text-danger"></span>
                                                 </div>
                                             </div> <!-- end col -->
                                         </div>
