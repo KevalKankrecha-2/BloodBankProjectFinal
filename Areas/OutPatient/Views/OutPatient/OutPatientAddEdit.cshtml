@@ -264,14 +264,11 @@
 @section Scripts{
 
     <script>
-
-
         function GetTotalPrice() {
             let Price = $("#PriceFillAuto").val();
             let Quantity = $("#QuantiyCount").val();
             $(".TotalPriceFill").val(Price * Quantity);
         }
-
         function GetInStockBloodBagAndPrice() {
             BloodGroupID = $('.BloodGroupDropDown').find(":selected").val();
             $("#BloodBagsList").empty();
@@ -298,7 +295,6 @@
                     });
             }
         }
-
       
     </script>
 }

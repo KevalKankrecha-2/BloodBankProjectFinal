@@ -163,16 +163,16 @@
                                                     <label class="form-label font-weight-bold">Gender</label>
                                                     <div style="display:flex;flex-direction:row">
                                                         <div class="form-check m-1">
-                                                            <input type="radio"  name="Gender" class="form-check-input" value="Male"  asp-for="Gender" checked="">
-                                                            <label class="form-check-label"  for="customRadiocolor1">Male</label>
+                                                            <input type="radio" name="Gender" class="form-check-input" value="Male" asp-for="Gender" checked="">
+                                                            <label class="form-check-label" for="customRadiocolor1">Male</label>
                                                         </div>
                                                         <div class="form-check m-1">
-                                                            <input type="radio"  name="Gender" class="form-check-input" value="Female" asp-for="Gender" checked="">
-                                                            <label class="form-check-label"  for="customRadiocolor1">FeMale</label>
+                                                            <input type="radio" name="Gender" class="form-check-input" value="Female" asp-for="Gender" checked="">
+                                                            <label class="form-check-label" for="customRadiocolor1">FeMale</label>
                                                         </div>
                                                         <div class="form-check m-1">
                                                             <input type="radio" id="Gender" name="Gender" class="form-check-input" value="Other" asp-for="Gender" checked="">
-                                                            <label class="form-check-label"  for="customRadiocolor1">Other</label>
+                                                            <label class="form-check-label" for="customRadiocolor1">Other</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -189,7 +189,7 @@
                                         </div>
                                         <!-- end row -->
 
-                                      
+
 
 
                                         <div class="row">
@@ -259,47 +259,41 @@
 @section Scripts{
 
     <script>
-        <!--//Display Preview of selected image-->
+                <!--//Display Preview of selected image-->
         FileUPT.onchange = evt => {
             const [file] = FileUPT.files
             if (file) {
                 blah.src = URL.createObjectURL(file)
             }
         }
-
-
-
-    function fnOnStateChange() {
-        var StateID = $("#StateID").val();
-        if (StateID !== "") {
-            $("#CityID").empty();
-            $("#CityID").append($("<option></option>").val("").html("Select City"));
-            $.ajax(
-                {
-                    type: "POST",
-                    contentType: "application/json; charset:utf-8",
-                    url: "@Url.Action("CityDropdownListByStateID", "Doctor")" + "?&StateID=" + StateID,
-                    data: {},
-                    dataType: "json",
-                    success: function (Result) {
-                        $.each(Result,
-                            function (key, value) {
-                                $("#CityID").append($("<option></option>").val(value.cityID).html(value.cityName));
-
-                            });
-                    },
-                    error: function (r) {
-                        alert("Error while loading dropdown.");
-                    }
-                });
+        function fnOnStateChange() {
+            var StateID = $("#StateID").val();
+            if (StateID !== "") {
+                $("#CityID").empty();
+                $("#CityID").append($("<option></option>").val("").html("Select City"));
+                $.ajax(
+                    {
+                        type: "POST",
+                        contentType: "application/json; charset:utf-8",
+                        url: "@Url.Action("CityDropdownListByStateID", "Doctor")" + "?&StateID=" + StateID,
+                        data: {},
+                        dataType: "json",
+                        success: function (Result) {
+                            $.each(Result,
+                                function (key, value) {
+                                    $("#CityID").append($("<option></option>").val(value.cityID).html(value.cityName));
+                                });
+                        },
+                        error: function (r) {
+                            alert("Error while loading dropdown.");
+                        }
+                    });
+            }
+            else {
+                $("#StateID").empty();
+                $("#StateID").append($("<option></option>").val("").html("Select State"));
+            }
         }
-        else {
-            $("#StateID").empty();
-            $("#StateID").append($("<option></option>").val("").html("Select State"));
-        }
-    }
-
-
     </script>
 
 }

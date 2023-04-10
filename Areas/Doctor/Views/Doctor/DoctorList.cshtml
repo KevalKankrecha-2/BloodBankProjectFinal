@@ -137,40 +137,40 @@
                                         <tbody>
                                             @foreach (DataRow drDoctor in Model.Rows)
                                             {
-                                            <tr>
-                                                <td>@drDoctor["DoctorName"]</td>
-                                                <td>@drDoctor["StateName"]</td>
-                                                <td>@drDoctor["CityName"]</td>
-                                                <td>@drDoctor["Address"]</td>
-                                                <td>@drDoctor["ContactNumber"]</td>
-                                                <td>@drDoctor["BirthDate"]</td>
-                                                <td>@drDoctor["Email"]</td>
-                                                <td>@drDoctor["Gender"]</td>
-                                                <td>@drDoctor["Description"]</td>
-                                                <td>@drDoctor["CreationDate"]</td>
-                                                <td>@drDoctor["ModificationDate"]</td>
+                                                <tr>
+                                                    <td>@drDoctor["DoctorName"]</td>
+                                                    <td>@drDoctor["StateName"]</td>
+                                                    <td>@drDoctor["CityName"]</td>
+                                                    <td>@drDoctor["Address"]</td>
+                                                    <td>@drDoctor["ContactNumber"]</td>
+                                                    <td>@drDoctor["BirthDate"]</td>
+                                                    <td>@drDoctor["Email"]</td>
+                                                    <td>@drDoctor["Gender"]</td>
+                                                    <td>@drDoctor["Description"]</td>
+                                                    <td>@drDoctor["CreationDate"]</td>
+                                                    <td>@drDoctor["ModificationDate"]</td>
 
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <form asp-area="Doctor" asp-controller="Doctor" asp-action="Add">
-                                                                <input type="hidden" value=@drDoctor["DoctorID"] name="DoctorID" />
-                                                                <button type="submit" style="background-color:transparent;border:transparent">
-                                                                    <a href="" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                </button>
-                                                            </form>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <form asp-area="Doctor" asp-controller="Doctor" asp-action="Add">
+                                                                    <input type="hidden" value=@drDoctor["DoctorID"] name="DoctorID" />
+                                                                    <button type="submit" style="background-color:transparent;border:transparent">
+                                                                        <a href="" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <form asp-area="Doctor" asp-controller="Doctor" asp-action="Delete">
+                                                                    <input type="hidden" value=@drDoctor["DoctorID"] name="DoctorID" />
+                                                                    <button type="submit" style="background-color:transparent;border:transparent" onclick="return DeleteConfirm();">
+                                                                        <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-lg-6">
-                                                            <form asp-area="Doctor" asp-controller="Doctor" asp-action="Delete">
-                                                                <input type="hidden" value=@drDoctor["DoctorID"] name="DoctorID" />
-                                                                <button type="submit" style="background-color:transparent;border:transparent" onclick="return DeleteConfirm();">
-                                                                    <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                    </td>
+                                                </tr>
                                             }
                                         </tbody>
                                     </table>
@@ -212,4 +212,5 @@
     </footer>
     <!-- end Footer -->
 </div>
-@section Scripts{}
+@section Scripts{
+}

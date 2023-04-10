@@ -130,33 +130,33 @@
                                         <tbody>
                                             @foreach (DataRow drBloodGroup in Model.Rows)
                                             {
-                                            <tr>
-                                                <td>@drBloodGroup["BloodGroupName"]</td>
-                                                <td>@drBloodGroup["Price"]</td>
-                                                <td>@drBloodGroup["Description"]</td>
-                                                <td>@drBloodGroup["CreationDate"]</td>
-                                                <td>@drBloodGroup["ModificationDate"]</td>
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <form asp-area="BloodGroup" asp-controller="BloodGroup" asp-action="Add">
-                                                                <input type="hidden" value=@drBloodGroup["BloodGroupID"] name="BloodGroupID" />
-                                                                <button type="submit" style="background-color:transparent;border:transparent">
-                                                                    <a href="" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                </button>
-                                                            </form>
+                                                <tr>
+                                                    <td>@drBloodGroup["BloodGroupName"]</td>
+                                                    <td>@drBloodGroup["Price"]</td>
+                                                    <td>@drBloodGroup["Description"]</td>
+                                                    <td>@drBloodGroup["CreationDate"]</td>
+                                                    <td>@drBloodGroup["ModificationDate"]</td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <form asp-area="BloodGroup" asp-controller="BloodGroup" asp-action="Add">
+                                                                    <input type="hidden" value=@drBloodGroup["BloodGroupID"] name="BloodGroupID" />
+                                                                    <button type="submit" style="background-color:transparent;border:transparent">
+                                                                        <a href="" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <form asp-area="BloodGroup" asp-controller="BloodGroup" asp-action="Delete">
+                                                                    <input type="hidden" value=@drBloodGroup["BloodGroupID"] name="BloodGroupID" />
+                                                                    <button type="submit" style="background-color:transparent;border:transparent" onclick="return DeleteConfirm();">
+                                                                        <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-lg-6">
-                                                            <form asp-area="BloodGroup" asp-controller="BloodGroup" asp-action="Delete">
-                                                                <input type="hidden" value=@drBloodGroup["BloodGroupID"] name="BloodGroupID" />
-                                                                <button type="submit" style="background-color:transparent;border:transparent" onclick="return DeleteConfirm();">
-                                                                    <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                    </td>
+                                                </tr>
                                             }
                                         </tbody>
                                     </table>
@@ -198,4 +198,5 @@
     </footer>
     <!-- end Footer -->
 </div>
-@section Scripts{}
+@section Scripts{
+}
