@@ -64,14 +64,14 @@ namespace BloodBankProject.DAL
 
         #endregion
 
-        #region PR_Donor_DeleteByPK
-        public void PR_Donor_DeleteByPK(int DonorID)
+        #region PR_OutPatient_DeleteByPK
+        public void PR_OutPatient_DeleteByPK(int OutPatientID)
         {
             /*try
             {*/
             SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Donor_DeleteByPK");
-            sqlDB.AddInParameter(dbCMD, "DonorID", SqlDbType.Int, DonorID);
+            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_OutPatient_DeleteByPK");
+            sqlDB.AddInParameter(dbCMD, "OutPatientID", SqlDbType.Int, OutPatientID);
             DataTable dtDonor = new DataTable();
             sqlDB.ExecuteNonQuery(dbCMD);
             /* }

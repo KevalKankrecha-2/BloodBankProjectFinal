@@ -125,8 +125,10 @@ namespace BloodBankProject.Areas.OutPatient.Controllers
         #endregion
 
         #region Delete
-        public IActionResult Delete()
+        public IActionResult Delete(int OutPatientID)
         {
+            OutPatient_DAL dalOutPatient = new OutPatient_DAL();
+            dalOutPatient.PR_OutPatient_DeleteByPK(OutPatientID);
             return RedirectToAction("Index");
         }
         #endregion
