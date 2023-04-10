@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\DashBoard\Models\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

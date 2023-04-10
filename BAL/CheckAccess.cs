@@ -17,9 +17,7 @@ namespace BloodBankProject.BAL
                 filterContext.HttpContext.Session.SetString("LoginFirstMSG", "Please Login Filrst..!!");
                 filterContext.Result = new RedirectResult("~/SEC_Login/SEC_Login/Index");
             }       
-
         }
-
         public override void OnResultExecuting(ResultExecutingContext filterContext)
         {
             filterContext.HttpContext.Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
