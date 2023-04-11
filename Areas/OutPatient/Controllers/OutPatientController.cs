@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using BloodBankProject.BAL;
 
 namespace BloodBankProject.Areas.OutPatient.Controllers
 {
+    [CheckAccess]
     [Area("OutPatient")]
     [Route("OutPatient/[controller]/[action]")]
     public class OutPatientController : Controller
@@ -110,15 +112,16 @@ namespace BloodBankProject.Areas.OutPatient.Controllers
         [HttpPost]
         public IActionResult Save(OutPatientModel modelOutPatient)
         {
-
+            BloodBag_DAL dalBloodBag = new BloodBag_DAL();
             OutPatient_DAL dalOutPatient = new OutPatient_DAL();
-            DataTable dt=dalOutPatient.PR_OutPatient_InsertByUserID(modelOutPatient);
+
+            DataTable dt= dalOutPatient.PR_OutPatient_InsertByUserID(modelOutPatient);
             int OutPatientID = Convert.ToInt32(dt.Rows[0]["OutPatientID"]);
-            //it outpatientid is ehich outpatient is inserted so bloodbag aa outpatient ne api ene mate status change kari nakhvanu tena mate niche ni loop
+            //it outpatientid is which outpatient is inserted so bloodbag aa outpatient ne api ene mate status change kari nakhvanu tena mate niche ni loop
             for (int i = 0; i < modelOutPatient.OutBloodBags.Count; i++)
             {
                 int BloodBagsIDForOut = modelOutPatient.OutBloodBags[i];
-                dalOutPatient.PR_BloodBag_UpdateStatusByBloodBagSerialNumber(BloodBagsIDForOut, OutPatientID);
+                dalBloodBag.PR_BloodBag_UpdateStatusByBloodBagSerialNumber(BloodBagsIDForOut, OutPatientID);
             }
             return RedirectToAction("Index");
         }
@@ -137,8 +140,8 @@ namespace BloodBankProject.Areas.OutPatient.Controllers
         #region Get Price and available Blood Bags By Blood Group
         public IActionResult BloodStock_SelectInStockBloodBagsAndPriceByBloodGroup(int BloodGroupID)
         {
-            OutPatient_DAL dalOutPatient = new OutPatient_DAL();
-            DataTable dtBloodBagsPrice = dalOutPatient.PR_BloodBag_SelectInStockBloodBagsAndPriceByBloodGroup(BloodGroupID);
+            BloodBag_DAL dalBloodBag = new BloodBag_DAL();
+            DataTable dtBloodBagsPrice = dalBloodBag.PR_BloodBag_SelectInStockBloodBagsAndPriceByBloodGroup(BloodGroupID);
             List<GetAvailableBloodBagsAndPrice> GetAvailableBloodBagsAndPrice = new List<GetAvailableBloodBagsAndPrice>();
             foreach (DataRow dr in dtBloodBagsPrice.Rows)
             {

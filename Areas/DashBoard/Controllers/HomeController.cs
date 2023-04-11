@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using BloodBankProject.BAL;
+using BloodBankProject.Areas.DashBoard.Models;
 
 namespace BloodBankProject.Areas.DashBoard.Controllers
 {
@@ -16,5 +17,6 @@ namespace BloodBankProject.Areas.DashBoard.Controllers
             DataTable dtBloodBagsCount = dalBloodBag.PR_BloodBag_SelectInStockBloodBagsCountByBloodGroup();
             return View("Index", dtBloodBagsCount);
         }
+
     }
 }

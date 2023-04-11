@@ -13,8 +13,8 @@ namespace BloodBankProject.DAL
         #region PR_BloodBag_SelectInStockBloodBagsCountByBloodGroup
         public DataTable PR_BloodBag_SelectInStockBloodBagsCountByBloodGroup()
         {
-            /*try
-            {*/
+            try
+            {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectInStockBloodBagsCountByBloodGroup");
                 DataTable dtBloodBag = new DataTable();
@@ -23,10 +23,53 @@ namespace BloodBankProject.DAL
                     dtBloodBag.Load(drBloodBag);
                 }
                 return dtBloodBag;
-            /*}
+            }
             catch (Exception ex)
             {
                 return null;
+            }
+        }
+
+        #endregion
+
+        
+
+        #region PR_BloodBag_SelectInStockBloodBagsAndPriceByBloodGroup
+        public DataTable PR_BloodBag_SelectInStockBloodBagsAndPriceByBloodGroup(int BloodGroupID)
+        {
+            /* try
+             {*/
+            SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectInStockBloodBagsAndPriceByBloodGroup");
+            sqlDB.AddInParameter(dbCMD, "BloodGroupID", SqlDbType.Int, BloodGroupID);
+            DataTable dtBloodGroupPrice = new DataTable();
+            using (IDataReader drBloodGroupPrice = sqlDB.ExecuteReader(dbCMD))
+            {
+                dtBloodGroupPrice.Load(drBloodGroupPrice);
+            }
+            return dtBloodGroupPrice;
+            /*   }
+               catch (Exception ex)
+               {
+                   return null;
+               }*/
+        }
+
+        #endregion
+
+        #region PR_BloodBag_UpdateStatusByBloodBagSerialNumber
+        public void PR_BloodBag_UpdateStatusByBloodBagSerialNumber(int BloodBagIdForOut, int OutPatientID)
+        {
+            /*try
+            {*/
+            SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_UpdateStatusByBloodBagSerialNumber");
+            sqlDB.AddInParameter(dbCMD, "BloodBagIdForOut", SqlDbType.Int, BloodBagIdForOut);
+            sqlDB.AddInParameter(dbCMD, "OutPatientID", SqlDbType.Int, OutPatientID);
+            sqlDB.ExecuteNonQuery(dbCMD);
+            /*}
+            catch (Exception ex)
+            {
             }*/
         }
 

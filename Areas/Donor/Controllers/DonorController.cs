@@ -10,9 +10,11 @@ using BloodBankProject.Areas.City.Models;
 using BloodBankProject.Areas.BloodGroup.Models;
 using BloodBankProject.Areas.Donor.Models;
 using System.IO;
+using BloodBankProject.BAL;
 
 namespace BloodBank.Areas.Donor.Controllers
 {
+    [CheckAccess]
     [Area("Donor")]
     [Route("Donor/[controller]/[action]")]
     public class DonorController : Controller

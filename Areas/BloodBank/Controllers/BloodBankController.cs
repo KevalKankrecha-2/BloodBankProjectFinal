@@ -5,9 +5,11 @@ using BloodBankProject.Areas.State.Models;
 using BloodBankProject.Areas.City.Models;
 using BloodBankProject.Areas.BloodBank.Models;
 using System.IO;
+using BloodBankProject.BAL;
 
 namespace BloodBank.Areas.BloodBank.Controllers
 {
+    [CheckAccess]
     [Area("BloodBank")]
     [Route("BloodBank/[controller]/[action]")]
     public class BloodBankController : Controller

@@ -1,10 +1,13 @@
 ﻿using BloodBankProject.Areas.State.Models;
+using BloodBankProject.BAL;
 using BloodBankProject.DAL;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using BloodBankProject.BAL;
 
 namespace BloodBankProject.Areas.State.Controllers
 {
+    [CheckAccess]
     [Area("State")]
     [Route("State/[controller]/[action]")]
     public class StateController : Controller

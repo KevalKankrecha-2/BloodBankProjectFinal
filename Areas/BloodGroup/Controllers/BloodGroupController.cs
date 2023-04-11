@@ -7,9 +7,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-
+using BloodBankProject.BAL;
 namespace BloodBankProject.Areas.BloodGroup.Controllers
 {
+    [CheckAccess]
     [Area("BloodGroup")]
     [Route("BloodGroup/[controller]/[action]")]
     public class BloodGroupController : Controller

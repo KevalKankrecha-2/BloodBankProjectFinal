@@ -6,10 +6,12 @@ using BloodBankProject.DAL;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using BloodBankProject.BAL;
 using System.Data;
 
 namespace BloodBankProject.Areas.BloodBag.Controllers
 {
+    [CheckAccess]
     [Area("BloodBag")]
     [Route("BloodBag/[controller]/[action]")]
     public class BloodBagController : Controller

@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 using System.Data;
 using BloodBankProject.Areas.City.Models;
 using BloodBankProject.Areas.State.Models;
-
+using BloodBankProject.BAL;
 namespace BloodBankProject.Areas.City.Controllers
 {
+    [CheckAccess]
     [Area("City")]
     [Route("City/[controller]/[action]")]
     public class CityController : Controller
