@@ -60,5 +60,12 @@ namespace BloodBankProject.Areas.BloodBank.Models
 
 
         public string? Description { get; set; }
+
+
+
+
+        public string StateName { get; set; }
+
+        public string CityName { get; set; }
     }
 }

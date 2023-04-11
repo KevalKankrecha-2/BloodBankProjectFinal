@@ -57,7 +57,7 @@ namespace BloodBank.Areas.BloodBank.Controllers
             {
                 #region Select By PK
                 DataTable dtBloodBank = dalBloodBank.PR_BloodBank_SelectByPK(BloodBankID);
-                
+
                 if (dtBloodBank.Rows.Count == 1)
                 {
                     foreach (DataRow drBloodBank in dtBloodBank.Rows)
@@ -73,8 +73,8 @@ namespace BloodBank.Areas.BloodBank.Controllers
                         modelBloodBank.Description = Convert.ToString(drBloodBank["Description"]);
                         modelBloodBank.Latitude = Convert.ToString(drBloodBank["Latitude"]);
                         modelBloodBank.Longtitude = Convert.ToString(drBloodBank["Longtitude"]);
-                        ViewBag.EditImageURL= Convert.ToString(drBloodBank["Image"]);
-                        modelBloodBank.Image= Convert.ToString(drBloodBank["Image"]);
+                        ViewBag.EditImageURL = Convert.ToString(drBloodBank["Image"]);
+                        modelBloodBank.Image = Convert.ToString(drBloodBank["Image"]);
                     }
 
                 }
@@ -152,4 +152,3 @@ namespace BloodBank.Areas.BloodBank.Controllers
         #endregion
     }
 }
-

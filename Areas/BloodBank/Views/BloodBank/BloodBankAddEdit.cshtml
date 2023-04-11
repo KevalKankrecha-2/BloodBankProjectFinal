@@ -283,9 +283,6 @@
                 blah.src = URL.createObjectURL(file)
             }
         }
-
-
-
         function fnOnStateChange() {
             var StateID = $("#StateID").val();
             if (StateID !== "") {
@@ -302,7 +299,6 @@
                             $.each(Result,
                                 function (key, value) {
                                     $("#CityID").append($("<option></option>").val(value.cityID).html(value.cityName));
-
                                 });
                         },
                         error: function (r) {
@@ -315,8 +311,6 @@
                 $("#StateID").append($("<option></option>").val("").html("Select State"));
             }
         }
-
-
     </script>
 
 }

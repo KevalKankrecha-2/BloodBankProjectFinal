@@ -64,5 +64,12 @@ namespace BloodBankProject.Areas.SEC_Login.Controllers
             }
             return View("Login");
         }
+
+
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Clear();
+            return View("Login");
+        }
     }
 }
