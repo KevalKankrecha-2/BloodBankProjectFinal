@@ -14,8 +14,8 @@ namespace BloodBankProject.DAL
         #region PR_BloodBag_InsertByUserID
         public void PR_BloodBag_InsertByUserID(BloodBagModel modelBloodBag)
         {
-        /*    try
-            {*/
+            try
+            {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_InsertByUserID");
                 sqlDB.AddInParameter(dbCMD, "BloodGroupID ", SqlDbType.Int, modelBloodBag.BloodGroupID);
@@ -29,10 +29,10 @@ namespace BloodBankProject.DAL
                 sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelBloodBag.Description);
                 sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
                 sqlDB.ExecuteNonQuery(dbCMD);
-          /*  }
+            }
             catch (Exception ex)
             {
-            }*/
+            }
         }
 
         #endregion
@@ -85,27 +85,27 @@ namespace BloodBankProject.DAL
         #region PR_BloodBag_DeleteByPK
         public void PR_BloodBag_DeleteByPK(int BloodBagSerialNumber)
         {
-           /* try
-            {*/
+            try
+            {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_DeleteByPK");
                 sqlDB.AddInParameter(dbCMD, "BloodBagSearialNumber", DbType.Int32, BloodBagSerialNumber);
                 sqlDB.ExecuteNonQuery(dbCMD);
-           /* }
+            }
             catch (Exception ex)
             {
-            }*/
+            }
         }
 
         #endregion
 
-        #region PR_BloodBag_UpdateByUserID
-        public void PR_BloodBag_UpdateByUserID(BloodBagModel modelBloodBag)
+        #region PR_BloodBag_UpdateByPKUserID
+        public void PR_BloodBag_UpdateByPKUserID(BloodBagModel modelBloodBag)
         {
-            /*    try
-                {*/
-            SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_UpdateByUserID");
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_UpdateByPKUserID");
             sqlDB.AddInParameter(dbCMD, "BloodBagSerialNumber ", SqlDbType.Int, modelBloodBag.BloodBagSerialNumber);
             sqlDB.AddInParameter(dbCMD, "BloodGroupID ", SqlDbType.Int, modelBloodBag.BloodGroupID);
             sqlDB.AddInParameter(dbCMD, "DonorID", SqlDbType.Int, modelBloodBag.DonorID);
@@ -118,10 +118,10 @@ namespace BloodBankProject.DAL
             sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelBloodBag.Description);
             sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
             sqlDB.ExecuteNonQuery(dbCMD);
-            /*  }
-              catch (Exception ex)
-              {
-              }*/
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         #endregion

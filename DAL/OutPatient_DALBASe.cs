@@ -44,8 +44,8 @@ namespace BloodBankProject.DAL
         #region PR_OutPatient_SelectByPK
         public DataTable PR_OutPatient_SelectByPK(int? OutPatientID)
         {
-          /*  try
-            {*/
+            try
+            {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_OutPatient_SelectByPK");
                 sqlDB.AddInParameter(dbCMD, "OutPatientID", SqlDbType.Int, OutPatientID);
@@ -55,11 +55,11 @@ namespace BloodBankProject.DAL
                     dtOutPatient.Load(drOutPatient);
                 }
                 return dtOutPatient;
-            /*}
+            }
             catch (Exception ex)
             {
                 return null;
-            }*/
+            }
         }
 
         #endregion
@@ -67,17 +67,17 @@ namespace BloodBankProject.DAL
         #region PR_OutPatient_DeleteByPK
         public void PR_OutPatient_DeleteByPK(int OutPatientID)
         {
-            /*try
-            {*/
-            SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_OutPatient_DeleteByPK");
-            sqlDB.AddInParameter(dbCMD, "OutPatientID", SqlDbType.Int, OutPatientID);
-            DataTable dtDonor = new DataTable();
-            sqlDB.ExecuteNonQuery(dbCMD);
-            /* }
-             catch (Exception ex)
-             {
-             }*/
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_OutPatient_DeleteByPK");
+                sqlDB.AddInParameter(dbCMD, "OutPatientID", SqlDbType.Int, OutPatientID);
+                DataTable dtDonor = new DataTable();
+                sqlDB.ExecuteNonQuery(dbCMD);
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         #endregion
@@ -85,29 +85,30 @@ namespace BloodBankProject.DAL
         #region PR_OutPatient_InsertByUserID
         public int PR_OutPatient_InsertByUserID(OutPatientModel modelOutPatient)
         {
-            /*try
-            {*/
-            SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_OutPatient_InsertByUserID");
-            sqlDB.AddInParameter(dbCMD, "OutPatientName", SqlDbType.NVarChar, modelOutPatient.OutPatientName);
-            sqlDB.AddInParameter(dbCMD, "ContactNumber", SqlDbType.NVarChar, modelOutPatient.ContactNumber);
-            sqlDB.AddInParameter(dbCMD, "BloodGroupID", SqlDbType.Int, modelOutPatient.BloodGroupID); ;
-            sqlDB.AddInParameter(dbCMD, "Quantity", SqlDbType.Int, modelOutPatient.Quantity);
-            sqlDB.AddInParameter(dbCMD, "TotalPrice", SqlDbType.Decimal, modelOutPatient.TotalPrice);
-            sqlDB.AddInParameter(dbCMD, "Price", SqlDbType.Decimal, modelOutPatient.Price);
-            sqlDB.AddInParameter(dbCMD, "BloodCrossVerifiedBy", SqlDbType.Int, modelOutPatient.BloodCrossVerifiedBy);
-            sqlDB.AddInParameter(dbCMD, "DoctorCrossVerificationRemarks", SqlDbType.NVarChar, modelOutPatient.DoctorCrossVerificationRemarks); 
-            sqlDB.AddInParameter(dbCMD, "OutDate", SqlDbType.DateTime, modelOutPatient.OutDate);
-            sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelOutPatient.Description);
-            sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
-            sqlDB.AddOutParameter(dbCMD, "OutPatientID", SqlDbType.Int, 1);
-            sqlDB.ExecuteNonQuery(dbCMD);
-            int OutPatientID= int.Parse(sqlDB.GetParameterValue(dbCMD, "@OutPatientID").ToString());
-            return OutPatientID;
-            /*}
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_OutPatient_InsertByUserID");
+                sqlDB.AddInParameter(dbCMD, "OutPatientName", SqlDbType.NVarChar, modelOutPatient.OutPatientName);
+                sqlDB.AddInParameter(dbCMD, "ContactNumber", SqlDbType.NVarChar, modelOutPatient.ContactNumber);
+                sqlDB.AddInParameter(dbCMD, "BloodGroupID", SqlDbType.Int, modelOutPatient.BloodGroupID); ;
+                sqlDB.AddInParameter(dbCMD, "Quantity", SqlDbType.Int, modelOutPatient.Quantity);
+                sqlDB.AddInParameter(dbCMD, "TotalPrice", SqlDbType.Decimal, modelOutPatient.TotalPrice);
+                sqlDB.AddInParameter(dbCMD, "Price", SqlDbType.Decimal, modelOutPatient.Price);
+                sqlDB.AddInParameter(dbCMD, "BloodCrossVerifiedBy", SqlDbType.Int, modelOutPatient.BloodCrossVerifiedBy);
+                sqlDB.AddInParameter(dbCMD, "DoctorCrossVerificationRemarks", SqlDbType.NVarChar, modelOutPatient.DoctorCrossVerificationRemarks);
+                sqlDB.AddInParameter(dbCMD, "OutDate", SqlDbType.DateTime, modelOutPatient.OutDate);
+                sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelOutPatient.Description);
+                sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
+                sqlDB.AddOutParameter(dbCMD, "OutPatientID", SqlDbType.Int, 1);
+                sqlDB.ExecuteNonQuery(dbCMD);
+                int OutPatientID = int.Parse(sqlDB.GetParameterValue(dbCMD, "@OutPatientID").ToString());
+                return OutPatientID;
+            }
             catch (Exception ex)
             {
-            }*/
+                return null;
+            }
         }
 
         #endregion

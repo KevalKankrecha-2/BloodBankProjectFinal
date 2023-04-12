@@ -13,8 +13,8 @@ namespace BloodBankProject.DAL
         #region PR_User_SelectByUserNamePassword
         public DataTable PR_User_SelectByUserNamePassword(string UserName,string Password)
         {
-          /*  try
-            {*/
+            try
+            {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_User_SelectByNamePassword");
                 sqlDB.AddInParameter(dbCMD, "UserName", SqlDbType.VarChar, UserName);
@@ -25,12 +25,12 @@ namespace BloodBankProject.DAL
                     dt.Load(dr);
                 }
                 return dt;
-           /* }
+            }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
                 return null;
-            }*/
+            }
         }
         #endregion
 

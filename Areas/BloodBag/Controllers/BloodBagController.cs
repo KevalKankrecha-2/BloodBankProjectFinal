@@ -16,13 +16,14 @@ namespace BloodBankProject.Areas.BloodBag.Controllers
     [Route("BloodBag/[controller]/[action]")]
     public class BloodBagController : Controller
     {
-
+        #region Blood Bag List
         public IActionResult Index()
         {
             BloodBag_DAL dalBloodBag = new BloodBag_DAL();
             DataTable dtBloodBag = dalBloodBag.PR_BloodBag_SelectAll();
             return View("BloodBagList", dtBloodBag);
         }
+        #endregion
 
         #region Open Form For Add/Edit
         [HttpPost]
@@ -143,14 +144,14 @@ namespace BloodBankProject.Areas.BloodBag.Controllers
         }
         #endregion
 
-        #region Save Blood Baag Stock
+        #region Save
         [HttpPost]
         public IActionResult Save(BloodBagModel modelBloodBag)
         {
             BloodBag_DAL dalBloodBag = new BloodBag_DAL();
             if (modelBloodBag.BloodBagSerialNumber != null)
             {
-                dalBloodBag.PR_BloodBag_UpdateByUserID(modelBloodBag);
+                dalBloodBag.PR_BloodBag_UpdateByPKUserID(modelBloodBag);
             }
             else
             {

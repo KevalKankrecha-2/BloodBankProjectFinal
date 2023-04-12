@@ -84,38 +84,11 @@ namespace BloodBankProject.DAL
         #region PR_Doctor_InsertByUserID
         public void PR_Doctor_InsertByUserID(DoctorModel modelDoctor)
         {
-            /*try
-            {*/
-                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Doctor_InsertByUserID");
-                sqlDB.AddInParameter(dbCMD, "DoctorName", SqlDbType.NVarChar, modelDoctor.DoctorName);
-                sqlDB.AddInParameter(dbCMD, "ContactNumber", SqlDbType.NVarChar, modelDoctor.ContactNumber);
-                sqlDB.AddInParameter(dbCMD, "StateID", SqlDbType.Int, modelDoctor.StateID);
-                sqlDB.AddInParameter(dbCMD, "CityID", SqlDbType.Int, modelDoctor.CityID);
-                sqlDB.AddInParameter(dbCMD, "Address", SqlDbType.NVarChar, modelDoctor.Address);
-                sqlDB.AddInParameter(dbCMD, "Gender", SqlDbType.NVarChar, modelDoctor.Gender);
-                sqlDB.AddInParameter(dbCMD, "Email", SqlDbType.NVarChar, modelDoctor.Email);
-                sqlDB.AddInParameter(dbCMD, "BirthDate", SqlDbType.DateTime, modelDoctor.BirthDate);
-                sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelDoctor.Description);
-                sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
-                sqlDB.ExecuteNonQuery(dbCMD);
-            /*}
-            catch (Exception ex)
+            try
             {
-            }*/
-        }
-
-        #endregion
-
-        #region PR_Doctor_UpdateByPKUserID
-        public void PR_Doctor_UpdateByPKUserID(DoctorModel modelDoctor)
-        {
-            /*try
-            {*/
-            SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Doctor_UpdateByPKUserID");
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Doctor_InsertByUserID");
             sqlDB.AddInParameter(dbCMD, "DoctorName", SqlDbType.NVarChar, modelDoctor.DoctorName);
-            sqlDB.AddInParameter(dbCMD, "DoctorID", SqlDbType.Int, modelDoctor.DoctorID);
             sqlDB.AddInParameter(dbCMD, "ContactNumber", SqlDbType.NVarChar, modelDoctor.ContactNumber);
             sqlDB.AddInParameter(dbCMD, "StateID", SqlDbType.Int, modelDoctor.StateID);
             sqlDB.AddInParameter(dbCMD, "CityID", SqlDbType.Int, modelDoctor.CityID);
@@ -126,10 +99,37 @@ namespace BloodBankProject.DAL
             sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelDoctor.Description);
             sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
             sqlDB.ExecuteNonQuery(dbCMD);
-          /* }
+            }
             catch (Exception ex)
             {
-            }*/
+            }
+        }
+
+        #endregion
+
+        #region PR_Doctor_UpdateByPKUserID
+        public void PR_Doctor_UpdateByPKUserID(DoctorModel modelDoctor)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_Doctor_UpdateByPKUserID");
+                sqlDB.AddInParameter(dbCMD, "DoctorName", SqlDbType.NVarChar, modelDoctor.DoctorName);
+                sqlDB.AddInParameter(dbCMD, "DoctorID", SqlDbType.Int, modelDoctor.DoctorID);
+                sqlDB.AddInParameter(dbCMD, "ContactNumber", SqlDbType.NVarChar, modelDoctor.ContactNumber);
+                sqlDB.AddInParameter(dbCMD, "StateID", SqlDbType.Int, modelDoctor.StateID);
+                sqlDB.AddInParameter(dbCMD, "CityID", SqlDbType.Int, modelDoctor.CityID);
+                sqlDB.AddInParameter(dbCMD, "Address", SqlDbType.NVarChar, modelDoctor.Address);
+                sqlDB.AddInParameter(dbCMD, "Gender", SqlDbType.NVarChar, modelDoctor.Gender);
+                sqlDB.AddInParameter(dbCMD, "Email", SqlDbType.NVarChar, modelDoctor.Email);
+                sqlDB.AddInParameter(dbCMD, "BirthDate", SqlDbType.DateTime, modelDoctor.BirthDate);
+                sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelDoctor.Description);
+                sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
+                sqlDB.ExecuteNonQuery(dbCMD);
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         #endregion*/

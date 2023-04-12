@@ -41,20 +41,20 @@ namespace BloodBankProject.DAL
         #region PR_State_InsertByUserID
         public void PR_State_InsertByUserID(StateModel modelState)
         {
-          /*  try
-            {*/
+            try
+            {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_State_InsertByUserID");
                 sqlDB.AddInParameter(dbCMD, "StateName", SqlDbType.NVarChar, modelState.StateName.Trim());
                 sqlDB.AddInParameter(dbCMD, "StateCode", SqlDbType.NVarChar, modelState.StateCode);
-            sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
-            sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelState.Description);
+                sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
+                sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelState.Description);
                 sqlDB.ExecuteNonQuery(dbCMD);
-            /*}
+            }
             catch (Exception ex)
             {
 
-            }*/
+            }
         }
 
         #endregion
@@ -187,8 +187,8 @@ namespace BloodBankProject.DAL
         #region PR_City_InsertByUserID
         public void PR_City_InsertByUserID(CityModel modelCity)
         {
-           /* try
-            {*/
+            try
+            {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_City_InsertByUserID");
                 sqlDB.AddInParameter(dbCMD, "CityName", SqlDbType.NVarChar, modelCity.CityName.Trim());
@@ -198,10 +198,10 @@ namespace BloodBankProject.DAL
                 sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
 
                 sqlDB.ExecuteNonQuery(dbCMD);
-           /* }
+            }
             catch (Exception ex)
             {
-            }*/
+            }
         }
         #endregion
 

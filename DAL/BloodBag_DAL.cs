@@ -32,8 +32,6 @@ namespace BloodBankProject.DAL
 
         #endregion
 
-        
-
         #region PR_BloodBag_SelectInStockBloodBagsAndPriceByBloodGroup
         public DataTable PR_BloodBag_SelectInStockBloodBagsAndPriceByBloodGroup(int BloodGroupID)
         {
@@ -60,17 +58,17 @@ namespace BloodBankProject.DAL
         #region PR_BloodBag_UpdateStatusByBloodBagSerialNumber
         public void PR_BloodBag_UpdateStatusByBloodBagSerialNumber(int BloodBagIdForOut, int OutPatientID)
         {
-            /*try
-            {*/
+            try
+            {
             SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
             DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_UpdateStatusByBloodBagSerialNumber");
             sqlDB.AddInParameter(dbCMD, "BloodBagIdForOut", SqlDbType.Int, BloodBagIdForOut);
             sqlDB.AddInParameter(dbCMD, "OutPatientID", SqlDbType.Int, OutPatientID);
             sqlDB.ExecuteNonQuery(dbCMD);
-            /*}
+            }
             catch (Exception ex)
             {
-            }*/
+            }
         }
 
         #endregion
