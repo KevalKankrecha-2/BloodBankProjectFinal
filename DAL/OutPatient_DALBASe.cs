@@ -83,7 +83,7 @@ namespace BloodBankProject.DAL
         #endregion
 
         #region PR_OutPatient_InsertByUserID
-        public DataTable PR_OutPatient_InsertByUserID(OutPatientModel modelOutPatient)
+        public int PR_OutPatient_InsertByUserID(OutPatientModel modelOutPatient)
         {
             /*try
             {*/
@@ -100,12 +100,10 @@ namespace BloodBankProject.DAL
             sqlDB.AddInParameter(dbCMD, "OutDate", SqlDbType.DateTime, modelOutPatient.OutDate);
             sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelOutPatient.Description);
             sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CommonVariables.UserID());
-            DataTable dtOutPatient = new DataTable();
-            using (IDataReader drOutPatient = sqlDB.ExecuteReader(dbCMD))
-            {
-                dtOutPatient.Load(drOutPatient);
-            }
-            return dtOutPatient;
+            sqlDB.AddOutParameter(dbCMD, "OutPatientID", SqlDbType.Int, 1);
+            sqlDB.ExecuteNonQuery(dbCMD);
+            int OutPatientID= int.Parse(sqlDB.GetParameterValue(dbCMD, "@OutPatientID").ToString());
+            return OutPatientID;
             /*}
             catch (Exception ex)
             {

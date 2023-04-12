@@ -114,9 +114,8 @@ namespace BloodBankProject.Areas.OutPatient.Controllers
         {
             BloodBag_DAL dalBloodBag = new BloodBag_DAL();
             OutPatient_DAL dalOutPatient = new OutPatient_DAL();
-
-            DataTable dt= dalOutPatient.PR_OutPatient_InsertByUserID(modelOutPatient);
-            int OutPatientID = Convert.ToInt32(dt.Rows[0]["OutPatientID"]);
+            int OutPatientID = dalOutPatient.PR_OutPatient_InsertByUserID(modelOutPatient);
+            //out parameter OutPatientID
             //it outpatientid is which outpatient is inserted so bloodbag aa outpatient ne api ene mate status change kari nakhvanu tena mate niche ni loop
             for (int i = 0; i < modelOutPatient.OutBloodBags.Count; i++)
             {
