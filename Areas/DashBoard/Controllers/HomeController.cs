@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using BloodBankProject.BAL;
 using BloodBankProject.Areas.DashBoard.Models;
+using BloodBankProject.Areas.OutPatient.Models;
 
 namespace BloodBankProject.Areas.DashBoard.Controllers
 {

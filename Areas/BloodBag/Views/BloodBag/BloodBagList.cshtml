@@ -59,7 +59,6 @@
         <!-- end Topbar -->
         <!-- Start Content-->
         <div class="container-fluid">
-
             <!-- start page title -->
             <div class="row">
                 <div class="col-12">
@@ -94,6 +93,7 @@
                                     <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
                                         <thead>
                                             <tr>
+                                                <th>Action</th>
                                                 <th>Blood Bag Searial Number</th>
                                                 <th>Donor Name</th>
                                                 <th>BloodGroup Name</th>
@@ -105,25 +105,12 @@
                                                 <th>OutPatient Name</th>
                                                 <th>Creation Date</th>
                                                 <th>Modification Date</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach (DataRow drBloodBag in Model.Rows)
                                             {
                                                 <tr>
-                                                    <td>@drBloodBag["BloodBagSearialNumber"]</td>
-                                                    <td>@drBloodBag["DonorName"]</td>
-                                                    <td>@drBloodBag["BloodGroupName"]</td>
-                                                    <td>@drBloodBag["DonateDate"]</td>
-                                                    <td>@drBloodBag["ExpireDate"]</td>
-                                                    <td>@drBloodBag["DoctorName"]</td>
-                                                    <td>@drBloodBag["VerificationDoctorRemarks"]</td>
-                                                    <td>@drBloodBag["Status"]</td>
-                                                    <td>@drBloodBag["OutPatientName"]</td>
-                                                    <td>@drBloodBag["CreationDate"]</td>
-                                                    <td>@drBloodBag["ModificationDate"]</td>
-
                                                     <td>
                                                         <div class="row">
                                                             <div class="col-lg-6">
@@ -144,6 +131,19 @@
                                                             </div>
                                                         </div>
                                                     </td>
+                                                    <td>@drBloodBag["BloodBagSearialNumber"]</td>
+                                                    <td>@drBloodBag["DonorName"]</td>
+                                                    <td>@drBloodBag["BloodGroupName"]</td>
+                                                    <td>@drBloodBag["DonateDate"]</td>
+                                                    <td>@drBloodBag["ExpireDate"]</td>
+                                                    <td>@drBloodBag["DoctorName"]</td>
+                                                    <td>@drBloodBag["VerificationDoctorRemarks"]</td>
+                                                    <td>@drBloodBag["Status"]</td>
+                                                    <td>@drBloodBag["OutPatientName"]</td>
+                                                    <td>@drBloodBag["CreationDate"]</td>
+                                                    <td>@drBloodBag["ModificationDate"]</td>
+
+                                                   
                                                 </tr>
                                             }
                                         </tbody>

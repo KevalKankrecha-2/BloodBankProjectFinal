@@ -107,7 +107,7 @@ namespace BloodBankProject.DAL
             }
             catch (Exception ex)
             {
-                return null;
+                return 0;
             }
         }
 

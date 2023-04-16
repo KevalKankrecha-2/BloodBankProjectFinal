@@ -94,6 +94,7 @@
                                     <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
                                         <thead>
                                             <tr>
+                                                <th>Action</th>
                                                 <th>OutPatientName</th>
                                                 <th>BloodGroupName</th>
                                                 <th>Quantity</th>
@@ -106,25 +107,13 @@
                                                 <th>Description</th>
                                                 <th>CreationDate</th>
                                                 <th>ModificationDate</th>
-                                                <th>Action</th>
+                                              
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach (DataRow drOutPatient in Model.Rows)
                                             {
                                                 <tr>
-                                                    <td>@drOutPatient["OutPatientName"]</td>
-                                                    <td>@drOutPatient["BloodGroupName"]</td>
-                                                    <td>@drOutPatient["Quantity"]</td>
-                                                    <td>@drOutPatient["Price"]</td>
-                                                    <td>@drOutPatient["TotalPrice"]</td>
-                                                    <td>@drOutPatient["OutDate"]</td>
-                                                    <td>@drOutPatient["DoctorName"]</td>
-                                                    <td>@drOutPatient["DoctorCrossVerificationRemarks"]</td>
-                                                    <td>@drOutPatient["ContactNumber"]</td>
-                                                    <td>@drOutPatient["Description"]</td>
-                                                    <td>@drOutPatient["CreationDate"]</td>
-                                                    <td>@drOutPatient["ModificationDate"]</td>
                                                     <td>
                                                         <div class="row">
                                                             <div class="col-lg-6">
@@ -145,6 +134,19 @@
                                                             </div>
                                                         </div>
                                                     </td>
+                                                    <td>@drOutPatient["OutPatientName"]</td>
+                                                    <td>@drOutPatient["BloodGroupName"]</td>
+                                                    <td>@drOutPatient["Quantity"]</td>
+                                                    <td>@drOutPatient["Price"]</td>
+                                                    <td>@drOutPatient["TotalPrice"]</td>
+                                                    <td>@drOutPatient["OutDate"]</td>
+                                                    <td>@drOutPatient["DoctorName"]</td>
+                                                    <td>@drOutPatient["DoctorCrossVerificationRemarks"]</td>
+                                                    <td>@drOutPatient["ContactNumber"]</td>
+                                                    <td>@drOutPatient["Description"]</td>
+                                                    <td>@drOutPatient["CreationDate"]</td>
+                                                    <td>@drOutPatient["ModificationDate"]</td>
+                                                    
                                                 </tr>
                                             }
                                         </tbody>
