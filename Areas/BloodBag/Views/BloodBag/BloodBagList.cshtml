@@ -82,6 +82,32 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="header-title">Blood Bag List</h4>
+                            <form asp-area="BloodBag" asp-controller="BloodBag" asp-action="BloodBagFilter">
+                            <div class="row mb-3">
+                                <div class="col-lg-6">
+                                    @if (ViewBag.BloodGroupDropDownList != null)
+                                    {
+                                        <label class="form-label font-weight-bold">Select BloodGroup</label>
+                                        <select name="BloodGroup" class="form-control select2 BloodGroupDropDown" data-toggle="select2" asp-items="@(new SelectList(ViewBag.BloodGroupDropDownList, "BloodGroupID", "BloodGroupName").ToList()) ">
+                                            <option value="" selected disabled>Select BloodGroup</option>
+                                        </select>
+                                    }
+                                </div> <!-- end col -->
+                                <div class="col-lg-4">
+                                    <label class="form-label font-weight-bold">Select Status</label>
+                                    <select class="form-control select2 BloodGroupDropDown" data-toggle="select2" name="Status">
+                                        <option value="" selected disabled>Select Status</option>
+                                        <option value="">All</option>
+                                        <option value="InStock">InStock</option>
+                                        <option value="OutStock">OutStock</option>
+                                        <option value="ExpireStock">ExpireStock</option>
+                                    </select>
+                                </div> <!-- end col -->
+                                    <div class="col-lg-2">
+                                        <input type="submit" value="Search"/>
+                                    </div> <!-- end col -->
+                            </div>
+                            </form>
                             <div class="m-3">
                                 <form asp-area="BloodBag" asp-controller="BloodBag" asp-action="Add">
                                     <button class="btn btn-primary" type="submit"><i class="mdi mdi-plus-circle"></i>Add Blood Bag</button>
@@ -143,7 +169,7 @@
                                                     <td>@drBloodBag["CreationDate"]</td>
                                                     <td>@drBloodBag["ModificationDate"]</td>
 
-                                                   
+
                                                 </tr>
                                             }
                                         </tbody>
@@ -187,4 +213,4 @@
     <!-- end Footer -->
 </div>
 @section Scripts{
-}
+    }

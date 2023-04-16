@@ -19,8 +19,33 @@ namespace BloodBankProject.Areas.BloodBag.Controllers
         #region Blood Bag List
         public IActionResult Index()
         {
+            BloodGroup_DAL dalBloodGroup = new BloodGroup_DAL();
             BloodBag_DAL dalBloodBag = new BloodBag_DAL();
             DataTable dtBloodBag = dalBloodBag.PR_BloodBag_SelectAll();
+
+            #region Here Blood Group Drop Down are Passed For Add/Edit Mode
+            DataTable dtBloodGroupDropDownList = dalBloodGroup.PR_BloodGroupSelectForDropDownList();
+            List<BloodGroupDropDownModel> BloodGroupDropDownList = new List<BloodGroupDropDownModel>();
+            if (dtBloodGroupDropDownList.Rows.Count > 0)
+            {
+                foreach (DataRow drBloodGroupDropDown in dtBloodGroupDropDownList.Rows)
+                {
+                    BloodGroupDropDownModel BloodGroupDropDown = new BloodGroupDropDownModel();
+                    if ((int)drBloodGroupDropDown["BloodGroupID"] != 0)
+                    {
+                        BloodGroupDropDown.BloodGroupID = (int)drBloodGroupDropDown["BloodGroupID"];
+                    }
+                    if ((string)drBloodGroupDropDown["BloodGroupName"].ToString().Trim() != null)
+                    {
+                        BloodGroupDropDown.BloodGroupName = (string)drBloodGroupDropDown["BloodGroupName"].ToString().Trim();
+                    }
+                    BloodGroupDropDownList.Add(BloodGroupDropDown);
+                }
+                ViewBag.BloodGroupDropDownList = BloodGroupDropDownList;
+            }
+
+            #endregion
+
             return View("BloodBagList", dtBloodBag);
         }
         #endregion
@@ -186,6 +211,41 @@ namespace BloodBankProject.Areas.BloodBag.Controllers
             }
             var vModel = DonorDropDownList;
             return Json(vModel);
+        }
+        #endregion
+
+        #region Blood Bag List
+        public IActionResult BloodBagFilter(int BloodGroupID,string Status)
+        {
+            BloodGroup_DAL dalBloodGroup = new BloodGroup_DAL();
+            BloodBag_DAL dalBloodBag = new BloodBag_DAL();
+            DataTable dtBloodBag = dalBloodBag.PR_BloodBag_SelectByFilterBloodGroupStatus(BloodGroupID,Status);
+
+            #region Here Blood Group Drop Down are Passed For Add/Edit Mode
+            DataTable dtBloodGroupDropDownList = dalBloodGroup.PR_BloodGroupSelectForDropDownList();
+            List<BloodGroupDropDownModel> BloodGroupDropDownList = new List<BloodGroupDropDownModel>();
+            if (dtBloodGroupDropDownList.Rows.Count > 0)
+            {
+                foreach (DataRow drBloodGroupDropDown in dtBloodGroupDropDownList.Rows)
+                {
+                    BloodGroupDropDownModel BloodGroupDropDown = new BloodGroupDropDownModel();
+                    if ((int)drBloodGroupDropDown["BloodGroupID"] != 0)
+                    {
+                        BloodGroupDropDown.BloodGroupID = (int)drBloodGroupDropDown["BloodGroupID"];
+                    }
+                    if ((string)drBloodGroupDropDown["BloodGroupName"].ToString().Trim() != null)
+                    {
+                        BloodGroupDropDown.BloodGroupName = (string)drBloodGroupDropDown["BloodGroupName"].ToString().Trim();
+                    }
+                    BloodGroupDropDownList.Add(BloodGroupDropDown);
+                }
+                ViewBag.BloodGroupDropDownList = BloodGroupDropDownList;
+            }
+
+            #endregion
+
+            return View("BloodBagList", dtBloodBag);
+
         }
         #endregion
 

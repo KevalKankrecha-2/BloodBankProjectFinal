@@ -35,9 +35,9 @@ namespace BloodBankProject.DAL
         #region PR_BloodBag_SelectInStockBloodBagsAndPriceByBloodGroup
         public DataTable PR_BloodBag_SelectInStockBloodBagsAndPriceByBloodGroup(int BloodGroupID)
         {
-            /* try
-             {*/
-            SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
             DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectInStockBloodBagsAndPriceByBloodGroup");
             sqlDB.AddInParameter(dbCMD, "BloodGroupID", SqlDbType.Int, BloodGroupID);
             DataTable dtBloodGroupPrice = new DataTable();
@@ -46,11 +46,11 @@ namespace BloodBankProject.DAL
                 dtBloodGroupPrice.Load(drBloodGroupPrice);
             }
             return dtBloodGroupPrice;
-            /*   }
-               catch (Exception ex)
-               {
-                   return null;
-               }*/
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         #endregion
@@ -80,6 +80,46 @@ namespace BloodBankProject.DAL
             {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectInStockExpiredOutedBloodBags");
+                DataTable dtBloodBag = new DataTable();
+                using (IDataReader drBloodBag = sqlDB.ExecuteReader(dbCMD))
+                {
+                    dtBloodBag.Load(drBloodBag);
+                }
+                return dtBloodBag;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        #endregion
+
+        #region PR_BloodBag_SelectByFilterBloodGroupStatus
+        public DataTable PR_BloodBag_SelectByFilterBloodGroupStatus(int BloodGroupID, string Status)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectByFilterBloodGroupStatus");
+                sqlDB.AddInParameter(dbCMD, "BloodGroupID", SqlDbType.Int, BloodGroupID);
+                sqlDB.AddInParameter(dbCMD, "Status", SqlDbType.Int, Status);
+                if (BloodGroupID == 0)
+                {
+                    sqlDB.AddInParameter(dbCMD, "BloodGroupID", SqlDbType.Int, null);
+                }
+                else
+                {
+                    sqlDB.AddInParameter(dbCMD, "BloodGroupID", SqlDbType.Int, BloodGroupID);
+                }
+                if (Status == null)
+                {
+                    sqlDB.AddInParameter(dbCMD, "Status", SqlDbType.NVarChar, null);
+                }
+                else
+                {
+                    sqlDB.AddInParameter(dbCMD, "Status", SqlDbType.NVarChar, Status);
+                }
                 DataTable dtBloodBag = new DataTable();
                 using (IDataReader drBloodBag = sqlDB.ExecuteReader(dbCMD))
                 {
