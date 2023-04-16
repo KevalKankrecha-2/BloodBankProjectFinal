@@ -98,12 +98,10 @@ namespace BloodBankProject.DAL
         #region PR_BloodBag_SelectByFilterBloodGroupStatus
         public DataTable PR_BloodBag_SelectByFilterBloodGroupStatus(int BloodGroupID, string Status)
         {
-            try
-            {
+          /*  try
+            {*/
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectByFilterBloodGroupStatus");
-                sqlDB.AddInParameter(dbCMD, "BloodGroupID", SqlDbType.Int, BloodGroupID);
-                sqlDB.AddInParameter(dbCMD, "Status", SqlDbType.Int, Status);
                 if (BloodGroupID == 0)
                 {
                     sqlDB.AddInParameter(dbCMD, "BloodGroupID", SqlDbType.Int, null);
@@ -126,11 +124,11 @@ namespace BloodBankProject.DAL
                     dtBloodBag.Load(drBloodBag);
                 }
                 return dtBloodBag;
-            }
+          /*  }
             catch (Exception ex)
             {
                 return null;
-            }
+            }*/
         }
 
         #endregion
