@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "BloodBank-DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using BloodBankProject.BAL;
+@using System.Data;
+@model DataTable
+
+
+
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Column Chart</h5>
+            <!-- Column Chart -->
+            <div id="columnChart"></div>
+
+            <script>
+                var InStockCount = 0;
+                var OutStockCount = 0;
+                var ExpireStockCount = 0;
+                function demo() {
+                    $.ajax(
+                        {
+                            type: "POST",
+                            contentType: "application/json; charset:utf-8",
+                            url: "@Url.Action("PR_BloodBag_SelectInStockExpiredOutedBloodBagsByMonthAreaChart", "Home")",
+                            data: {},
+                            dataType: "json",
+                            success: function (Result) {
+                                $.each(Result,
+                                    function (key, value) {
+                                        if (value.status == "InStock") {
+                                            InStockCount = value.count;
+                                            alert("I" + InStockCount);
+                                        }
+                                        if (value.status == "OutStock") {
+                                            OutStockCount = parseInt(value.count);
+                                        }
+                                    });
+                            },
+                            error: function (r) {
+                            }
+                        });
+                }
+                document.addEventListener("DOMContentLoaded", () => {
+                    demo();
+                    alert(InStockCount);
+                    new ApexCharts(document.querySelector("#columnChart"), {
+                        series: [{
+                            name: 'InComing BloodStock',
+                            data: [total]
+                        }, {
+                            name: 'Available BloodStock',
+                            data: [instockcountdigit]
+                        }, {
+                            name: 'Out BloodStock',
+                            data: [outstockcountdigit]
+                        }],
+                        chart: {
+                            type: 'bar',
+                            height: 350
+                        },
+                        plotOptions: {
+                            bar: {
+                                horizontal: false,
+                                columnWidth: '55%',
+                                endingShape: 'rounded'
+                            },
+                        },
+                        dataLabels: {
+                            enabled: false
+                        },
+                        stroke: {
+                            show: true,
+                            width: 2,
+                            colors: ['transparent']
+                        },
+                        xaxis: {
+                            categories: ['Feb'],
+                        },
+                        yaxis: {
+                            title: {
+                                text: '$ (thousands)'
+                            }
+                        },
+                        fill: {
+                            opacity: 1
+                        },
+                        tooltip: {
+                            y: {
+                                formatter: function (val) {
+                                    return "$ " + val + " thousands"
+                                }
+                            }
+                        }
+                    }).render();
+                });
+            </script>
+
+            <!-- End Column Chart -->
+
+        </div>
+    </div>
+</div>

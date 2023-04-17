@@ -214,7 +214,7 @@ namespace BloodBankProject.Areas.BloodBag.Controllers
         }
         #endregion
 
-        #region Blood Bag List
+        #region Blood Bag Filter
         public IActionResult BloodBagFilter(int BloodGroupID,string Status)
         {
             BloodGroup_DAL dalBloodGroup = new BloodGroup_DAL();
@@ -246,6 +246,13 @@ namespace BloodBankProject.Areas.BloodBag.Controllers
 
             return View("BloodBagList", dtBloodBag);
 
+        }
+        #endregion
+
+        #region Cancel Filter
+        public IActionResult CancelFilter()
+        {
+            return RedirectToAction("Index");
         }
         #endregion
 

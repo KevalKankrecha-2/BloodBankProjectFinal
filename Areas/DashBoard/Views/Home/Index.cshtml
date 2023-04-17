@@ -3,8 +3,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using BloodBankProject.BAL;
-@using System.Data;
+@using System.Data
 @model DataTable
+
 
 <div class="content-page">
     <div class="content">
@@ -160,7 +161,7 @@
 
                             <div class="row">
                                 @* Dynamic Pie Chart*@
-                                <div class="col-lg-6">
+                               <div class="col-lg-6">
                                     <div class="card">
                                         <div class="card-body">
                                             <h4 class="header-title">Available Blood Stock</h4>
@@ -200,10 +201,7 @@
                                 </div>
                                 @*#end Dynamic Pie Chart *@
 
-
-
-
-
+                               
                             </div>
                         </div> <!-- end card-body-->
                     </div> <!-- end card-->
@@ -240,5 +238,4 @@
     <!-- end Footer -->
 
 </div>
-@section Scripts{
-}
+@section Scripts{}

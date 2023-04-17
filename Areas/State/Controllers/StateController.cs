@@ -10,7 +10,7 @@ namespace BloodBankProject.Areas.State.Controllers
     [CheckAccess]
     [Area("State")]
     [Route("State/[controller]/[action]")]
-    public class StateController : Controller
+    public class HomeController : Controller
     {
         #region StateList
         public ActionResult Index()

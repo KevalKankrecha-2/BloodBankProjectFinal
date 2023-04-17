@@ -13,8 +13,8 @@ namespace BloodBankProject.DAL
         #region PR_BloodBag_SelectInStockBloodBagsCountByBloodGroup
         public DataTable PR_BloodBag_SelectInStockBloodBagsCountByBloodGroup()
         {
-            try
-            {
+           /* try
+            {*/
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectInStockBloodBagsCountByBloodGroup");
                 DataTable dtBloodBag = new DataTable();
@@ -23,11 +23,11 @@ namespace BloodBankProject.DAL
                     dtBloodBag.Load(drBloodBag);
                 }
                 return dtBloodBag;
-            }
+          /*  }
             catch (Exception ex)
             {
                 return null;
-            }
+            }*/
         }
 
         #endregion
@@ -73,28 +73,6 @@ namespace BloodBankProject.DAL
 
         #endregion
 
-        #region PR_BloodBag_SelectInStockExpiredOutedBloodBags
-        public DataTable PR_BloodBag_SelectInStockExpiredOutedBloodBags()
-        {
-            try
-            {
-                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectInStockExpiredOutedBloodBags");
-                DataTable dtBloodBag = new DataTable();
-                using (IDataReader drBloodBag = sqlDB.ExecuteReader(dbCMD))
-                {
-                    dtBloodBag.Load(drBloodBag);
-                }
-                return dtBloodBag;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-
-        #endregion
-
         #region PR_BloodBag_SelectByFilterBloodGroupStatus
         public DataTable PR_BloodBag_SelectByFilterBloodGroupStatus(int BloodGroupID, string Status)
         {
@@ -133,5 +111,26 @@ namespace BloodBankProject.DAL
 
         #endregion
 
+        #region PR_BloodBag_SelectInStockExpiredOutedBloodBagsByMonthAreaChart
+        public DataTable PR_BloodBag_SelectInStockExpiredOutedBloodBagsByMonthAreaChart()
+        {
+           /* try
+            {*/
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectInStockExpiredOutedBloodBagsByMonthAreaChart");
+                DataTable dtBloodBag = new DataTable();
+                using (IDataReader drBloodBag = sqlDB.ExecuteReader(dbCMD))
+                {
+                    dtBloodBag.Load(drBloodBag);
+                }
+                return dtBloodBag;
+           /* }
+            catch (Exception ex)
+            {
+                return null;
+            }*/
+        }
+
+        #endregion
     }
 }

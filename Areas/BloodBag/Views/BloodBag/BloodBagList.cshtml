@@ -83,12 +83,12 @@
                         <div class="card-body">
                             <h4 class="header-title">Blood Bag List</h4>
                             <form asp-area="BloodBag" asp-controller="BloodBag" asp-action="BloodBagFilter">
-                            <div class="row mb-3">
-                                <div class="col-lg-6">
+                            <div class="row mb-3 mt-3">
+                                <div class="col-lg-4">
                                     @if (ViewBag.BloodGroupDropDownList != null)
                                     {
                                         <label class="form-label font-weight-bold">Select BloodGroup</label>
-                                        <select name="BloodGroup" class="form-control select2 BloodGroupDropDown" data-toggle="select2" asp-items="@(new SelectList(ViewBag.BloodGroupDropDownList, "BloodGroupID", "BloodGroupName").ToList()) ">
+                                            <select name="BloodGroupID" class="form-control select2 BloodGroupDropDown" data-toggle="select2" asp-items="@(new SelectList(ViewBag.BloodGroupDropDownList, "BloodGroupID", "BloodGroupName").ToList()) ">
                                             <option value="" selected disabled>Select BloodGroup</option>
                                         </select>
                                     }
@@ -103,8 +103,10 @@
                                         <option value="ExpireStock">ExpireStock</option>
                                     </select>
                                 </div> <!-- end col -->
-                                    <div class="col-lg-2">
-                                        <input type="submit" value="Search"/>
+                                    <div class="col-lg-4">
+                                        <label></label>
+                                        <input style="margin-top:27px" type="submit" class="btn btn-primary" value="Search"/>
+                                        <a style="margin-top:27px" class="btn btn-primary" asp-area="BloodBag" asp-controller="BloodBag" asp-action="CancelFilter">Clear Filter</a>
                                     </div> <!-- end col -->
                             </div>
                             </form>

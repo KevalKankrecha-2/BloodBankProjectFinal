@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "~/Views/Shared/ClientPanelLayout.cshtml";
+}
+@using System.Data
+@model DataTable
+<main id="main">
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Services</h2>
+                <h3><span>Search Blood</span></h3>
+                <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+            </div>
+            <div class="table-responsible">
+            <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
+                <thead>
+                    <tr>
+                        <th>Donor Name</th>
+                        <th>BloodGroup Name</th>
+                        <th>Price</th>
+                        <th>Donate Date</th>
+                        <th>Expire Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (DataRow drBloodBag in Model.Rows)
+                    {
+                        <tr>
+                            <td>@drBloodBag["DonorName"]</td>
+                            <td>@drBloodBag["BloodGroupName"]</td>
+                            <td>@drBloodBag["Price"]</td>
+                            <td>@drBloodBag["DonateDate"]</td>
+                            <td>@drBloodBag["ExpireDate"]</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </section>
+    <!-- End Services Section -->
+    </main>

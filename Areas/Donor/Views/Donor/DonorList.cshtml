@@ -83,11 +83,45 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="header-title">Donor List</h4>
+                            <form asp-area="Donor" asp-controller="Donor" asp-action="DonorFilter">
+                                <div class="row mt-3 mb-3">
+                                    <div class="col-lg-3">
+                                        @if (ViewBag.BloodGroupDropDownList != null)
+                                        {
+                                            <label class="form-label font-weight-bold">Select BloodGroup</label>
+                                            <select class="form-control select2" data-toggle="select2" name="BloodGroupID" asp-items="@(new SelectList(ViewBag.BloodGroupDropDownList, "BloodGroupID", "BloodGroupName").ToList())">
+                                                <option value="" disabled selected>Select BloodGroup</option>
+                                            </select>
+                                        }
+                                    </div> <!-- end col -->
+                                    <div class="col-lg-3">
+                                        @if (ViewBag.StateDropDownList != null)
+                                        {
+                                            <label class="form-label font-weight-bold">Select State</label>
+                                            <select id="StateID" onchange="fnOnStateChange();" class="form-control select2" data-toggle="select2" name="StateID" asp-items="@(new SelectList(ViewBag.StateDropDownList, "StateID", "StateName").ToList()) ">
+                                                <option value="" disabled selected>Select State</option>
+                                            </select>
+                                        }
+                                    </div> <!-- end col -->
+                                    <div class="col-lg-3">
+                                        <label class="form-label font-weight-bold">Select City</label>
+                                        <select id="CityID" class="form-control select2" data-toggle="select2" name="CityID" asp-items="@(new SelectList(ViewBag.CityDropDownList, "CityID", "CityName").ToList()) ">
+                                        </select>
+                                    </div> <!-- end col -->
+                                    <div class="col-lg-3">
+                                        <input style="margin-top:27px" type="submit" class="btn btn-primary" value="Search" />
+                                        <a style="margin-top:27px"  class="btn btn-primary" asp-area="Donor" asp-controller="Donor" asp-action="CancelFilter">Clear Filter</a>
+                                    </div>
+                                </div>
+                            </form>
+
                             <div class="m-3">
                                 <form asp-area="Donor" asp-controller="Donor" asp-action="Add">
                                     <button class="btn btn-primary" type="submit"><i class="mdi mdi-plus-circle"></i>Add Donor</button>
                                 </form>
                             </div>
+
+
 
                             <div class="tab-content">
                                 <div class="tab-pane show active" id="scroll-horizontal-preview">
@@ -118,47 +152,47 @@
                                         <tbody>
                                             @foreach (DataRow drDonor in Model.Rows)
                                             {
-                                            <tr>
-                                                <td>@drDonor["DonorName"]</td>
-                                                <td>@drDonor["StateName"]</td>
-                                                <td>@drDonor["CityName"]</td>
-                                                <td>@drDonor["Address"]</td>
-                                                <td>@drDonor["ContactNumber"]</td>
-                                                <td>@drDonor["BirthDate"]</td>
-                                                <td>@drDonor["Email"]</td>
-                                                <td>@drDonor["Gender"]</td>
-                                                <td>@drDonor["ProofType"]</td>
-                                                <td>@drDonor["ProofNumber"]</td>
-                                                <td>@drDonor["Pulse"]</td>
-                                                <td>@drDonor["BP"]</td>
-                                                <td>@drDonor["Weight"]</td>
-                                                <td>@drDonor["BloodGroupName"]</td>
-                                                <td>@drDonor["Description"]</td>
-                                                <td>@drDonor["CreationDate"]</td>
-                                                <td>@drDonor["ModificationDate"]</td>
-                                                <td><img src="@Url.Content(drDonor["Image"].ToString())" class="img-fluid" /></td>
+                                                <tr>
+                                                    <td>@drDonor["DonorName"]</td>
+                                                    <td>@drDonor["StateName"]</td>
+                                                    <td>@drDonor["CityName"]</td>
+                                                    <td>@drDonor["Address"]</td>
+                                                    <td>@drDonor["ContactNumber"]</td>
+                                                    <td>@drDonor["BirthDate"]</td>
+                                                    <td>@drDonor["Email"]</td>
+                                                    <td>@drDonor["Gender"]</td>
+                                                    <td>@drDonor["ProofType"]</td>
+                                                    <td>@drDonor["ProofNumber"]</td>
+                                                    <td>@drDonor["Pulse"]</td>
+                                                    <td>@drDonor["BP"]</td>
+                                                    <td>@drDonor["Weight"]</td>
+                                                    <td>@drDonor["BloodGroupName"]</td>
+                                                    <td>@drDonor["Description"]</td>
+                                                    <td>@drDonor["CreationDate"]</td>
+                                                    <td>@drDonor["ModificationDate"]</td>
+                                                    <td><img src="@Url.Content(drDonor["Image"].ToString())" class="img-fluid" /></td>
 
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <form asp-area="Donor" asp-controller="Donor" asp-action="Add">
-                                                                <input type="hidden" value=@drDonor["DonorID"] name="DonorID" />
-                                                                <button type="submit" style="background-color:transparent;border:transparent">
-                                                                    <a href="" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                </button>
-                                                            </form>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <form asp-area="Donor" asp-controller="Donor" asp-action="Add">
+                                                                    <input type="hidden" value=@drDonor["DonorID"] name="DonorID" />
+                                                                    <button type="submit" style="background-color:transparent;border:transparent">
+                                                                        <a href="" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <form asp-area="Donor" asp-controller="Donor" asp-action="Delete">
+                                                                    <input type="hidden" value=@drDonor["DonorID"] name="DonorID" />
+                                                                    <button type="submit" style="background-color:transparent;border:transparent" onclick="return DeleteConfirm();">
+                                                                        <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-lg-6">
-                                                            <form asp-area="Donor" asp-controller="Donor" asp-action="Delete">
-                                                                <input type="hidden" value=@drDonor["DonorID"] name="DonorID" />
-                                                                <button type="submit" style="background-color:transparent;border:transparent" onclick="return DeleteConfirm();">
-                                                                    <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                </button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                    </td>
+                                                </tr>
                                             }
                                         </tbody>
                                     </table>
@@ -200,4 +234,35 @@
     </footer>
     <!-- end Footer -->
 </div>
-@section Scripts{}
+@section Scripts{
+    <script>
+        function fnOnStateChange() {
+            var StateID = $("#StateID").val();
+            if (StateID !== "") {
+                $("#CityID").empty();
+                $("#CityID").append($("<option></option>").val("").html("Select City"));
+                $.ajax(
+                    {
+                        type: "POST",
+                        contentType: "application/json; charset:utf-8",
+                        url: "@Url.Action("CityDropdownListByStateID", "Donor")" + "?&StateID=" + StateID,
+                        data: {},
+                        dataType: "json",
+                        success: function (Result) {
+                            $.each(Result,
+                                function (key, value) {
+                                    $("#CityID").append($("<option></option>").val(value.cityID).html(value.cityName));
+                                });
+                        },
+                        error: function (r) {
+                            alert("Error while loading dropdown.");
+                        }
+                    });
+            }
+            else {
+                $("#StateID").empty();
+                $("#StateID").append($("<option></option>").val("").html("Select State"));
+            }
+        }
+    </script>
+}
