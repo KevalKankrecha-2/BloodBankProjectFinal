@@ -1,0 +1,97 @@
+﻿@{
+    Layout = "~/Views/Shared/ClientPanelLayout.cshtml";
+}
+@using System.Data
+@model DataTable
+<!-- ======= Hero Section ======= -->
+
+<main id="main">
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Services</h2>
+                <h3><span>Search Blood</span></h3>
+                <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+            </div>
+            <div class="table-responsible">
+                <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
+                    <thead>
+                        <tr>
+                            <th>Donor name</th>
+                            <th>State Name</th>
+                            <th>City Name</th>
+                            <th>Address</th>
+                            <th>Contact Number</th>
+                            <th>BirthDate</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>ProffType</th>
+                            <th>ProofNumber</th>
+                            <th>Pulse</th>
+                            <th>BP</th>
+                            <th>Weight</th>
+                            <th>Blood Group</th>
+                            <th>Description</th>
+                            <th>Creation Date</th>
+                            <th>Modification Date</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (DataRow drDonor in Model.Rows)
+                        {
+                            <tr>
+                                <td>@drDonor["DonorName"]</td>
+                                <td>@drDonor["StateName"]</td>
+                                <td>@drDonor["CityName"]</td>
+                                <td>@drDonor["Address"]</td>
+                                <td>@drDonor["ContactNumber"]</td>
+                                <td>@drDonor["BirthDate"]</td>
+                                <td>@drDonor["Email"]</td>
+                                <td>@drDonor["Gender"]</td>
+                                <td>@drDonor["ProofType"]</td>
+                                <td>@drDonor["ProofNumber"]</td>
+                                <td>@drDonor["Pulse"]</td>
+                                <td>@drDonor["BP"]</td>
+                                <td>@drDonor["Weight"]</td>
+                                <td>@drDonor["BloodGroupName"]</td>
+                                <td>@drDonor["Description"]</td>
+                                <td>@drDonor["CreationDate"]</td>
+                                <td>@drDonor["ModificationDate"]</td>
+                                <td><img src="@Url.Content(drDonor["Image"].ToString())" class="img-fluid" /></td>
+
+                                <td>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <form asp-area="Donor" asp-controller="Donor" asp-action="Add">
+                                                <input type="hidden" value=@drDonor["DonorID"] name="DonorID" />
+                                                <button type="submit" style="background-color:transparent;border:transparent">
+                                                    <a href="" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <form asp-area="Donor" asp-controller="Donor" asp-action="Delete">
+                                                <input type="hidden" value=@drDonor["DonorID"] name="DonorID" />
+                                                <button type="submit" style="background-color:transparent;border:transparent" onclick="return DeleteConfirm();">
+                                                    <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <!-- End Services Section -->
+</main>
+
+
+

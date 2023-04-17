@@ -249,7 +249,6 @@ namespace BloodBank.Areas.Donor.Controllers
         }
         #endregion
 
-
         #region DonorFilter
         public IActionResult DonorFilter(int BloodGroupID, int StateID, int CityID)
         {
