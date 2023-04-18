@@ -9,7 +9,9 @@ namespace BloodBankProject.Controllers
         #region DashBoard
         public ActionResult Index()
         {
-            return View("Index");
+            Doctor_DAL dalDoctor = new Doctor_DAL();
+            DataTable dtDoctor = dalDoctor.PR_Doctor_SelectAll();
+            return View("Index", dtDoctor);
         }
         #endregion
     }

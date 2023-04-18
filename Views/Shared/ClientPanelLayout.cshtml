@@ -38,6 +38,18 @@
     <link href="~/assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
     <link rel="stylesheet" href="~/css/Custom.css" />
 
+    @*Display Map css and scrips*@
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="~/MapAssets/demo.css" />
+    <link rel="stylesheet" type="text/css" href="~/MapAssets/styles.css" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
+
+    @* End *@
+
 </head>
 
 <body>
@@ -54,11 +66,7 @@
                     <li><a class="nav-linkclient scrollto active" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a class="nav-linkclient scrollto" asp-controller="BloodBag" asp-action="Index">Search Blood</a></li>
                     <li><a class="nav-linkclient scrollto" asp-controller="Donor" asp-action="Index">Donor</a></li>
-                    <li><a class="nav-linkclient scrollto" href="#about">About</a></li>
-                    <li><a class="nav-linkclient scrollto" href="#services">Services</a></li>
-                    <li><a class="nav-linkclient scrollto" href="#team">Team</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a class="nav-linkclient scrollto" href="#contact">Contact</a></li>
+                    <li><a class="nav-linkclient scrollto" asp-controller="About" asp-action="Index">About US</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar --><!-- .navbar -->
@@ -89,10 +97,9 @@
                         <h4>Useful Links</h4>
                         <ul>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Search Blood</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Donor</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">About US</a></li>
                         </ul>
                     </div>
 
@@ -123,14 +130,14 @@
 
             <div class="me-md-auto text-center text-md-start">
                 <div class="copyright">
-                    &copy; Copyright <strong><span>Tempo</span></strong>. All Rights Reserved
+                    &copy; Copyright <strong><span>2023</span></strong>. All Rights Reserved
                 </div>
                 <div class="credits">
                     <!-- All the links in the footer should remain intact. -->
                     <!-- You can delete the links only if you purchased the pro version. -->
                     <!-- Licensing information: https://bootstrapmade.com/license/ -->
                     <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/tempo-free-onepage-bootstrap-theme/ -->
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                    Designed by <a href="https://bootstrapmade.com/">Keval Kankrecha</a>
                 </div>
             </div>
             <div class="social-links text-center text-md-right pt-3 pt-md-0">
@@ -182,6 +189,18 @@
     <script src="~/assets/js/pages/demo.profile.js"></script>
     <script src="~/assets/js/pages/demo.timepicker.js"></script>
 
+
+    @*Grapth and chart JS*@
+    <script src="~/Chart_Graph_JS/react.production.min.js"></script>
+    <script src="~/Chart_Graph_JS/react-dom.production.min.js"></script>
+    <script src="~/Chart_Graph_JS/prop-types.min.js"></script>
+    <script src="~/Chart_Graph_JS/browser.min.js"></script>
+    <script src="~/Chart_Graph_JS/react-apexcharts.iife.min.js"></script>
+
+    <script src="~/Chart_Graph_JS/apexcharts..js"></script>
+    <script src="~/Chart_Graph_JS/Chart.js"></script>
+
+    @*end*@
 </body>
 
 </html>
