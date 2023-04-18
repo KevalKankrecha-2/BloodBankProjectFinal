@@ -59,6 +59,28 @@ namespace BloodBankProject.DAL
 
         #endregion
 
+        #region PR_BloodBag_SelectAllInStockBloodBags
+        public DataTable PR_BloodBag_SelectAllInStockBloodBags()
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectAllInStockBloodBags");
+                DataTable dtBloodBag = new DataTable();
+                using (IDataReader drBloodBag = sqlDB.ExecuteReader(dbCMD))
+                {
+                    dtBloodBag.Load(drBloodBag);
+                }
+                return dtBloodBag;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        #endregion
+
         #region PR_BloodBag_SelectByPK
         public DataTable PR_BloodBag_SelectByPK(int? BloodBagSerialNumber)
         {

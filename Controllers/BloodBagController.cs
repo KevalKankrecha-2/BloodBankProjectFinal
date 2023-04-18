@@ -9,7 +9,7 @@ namespace BloodBankProject.Controllers
         public IActionResult Index()
         {
             BloodBag_DAL dalBloodBag = new BloodBag_DAL();
-            DataTable dtBloodBag = dalBloodBag.PR_BloodBag_SelectAll();
+            DataTable dtBloodBag = dalBloodBag.PR_BloodBag_SelectAllInStockBloodBags();
             return View("BloodBags", dtBloodBag);
         }
     }

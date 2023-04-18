@@ -14,31 +14,31 @@
                 <p>Seach Blood By Blood Group</p>
             </div>
             <div class="table-responsible">
-            <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
-                <thead>
-                    <tr>
-                        <th>Donor Name</th>
-                        <th>BloodGroup Name</th>
-                        <th>Price</th>
-                        <th>Donate Date</th>
-                        <th>Expire Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (DataRow drBloodBag in Model.Rows)
-                    {
+                <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
+                    <thead>
                         <tr>
-                            <td>@drBloodBag["DonorName"]</td>
-                            <td>@drBloodBag["BloodGroupName"]</td>
-                            <td>@drBloodBag["Price"]</td>
-                            <td>@drBloodBag["DonateDate"]</td>
-                            <td>@drBloodBag["ExpireDate"]</td>
+                            <th>Donor Name</th>
+                            <th>BloodGroup Name</th>
+                            <th>Price</th>
+                            <th>Donate Date</th>
+                            <th>Expire Date</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (DataRow drBloodBag in Model.Rows)
+                        {
+                            <tr>
+                                <td>@drBloodBag["DonorName"]</td>
+                                <td>@drBloodBag["BloodGroupName"]</td>
+                                <td>@drBloodBag["Price"]</td>
+                                <td>@drBloodBag["DonateDate"]</td>
+                                <td>@drBloodBag["ExpireDate"]</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
     <!-- End Services Section -->
-    </main>
+</main>
