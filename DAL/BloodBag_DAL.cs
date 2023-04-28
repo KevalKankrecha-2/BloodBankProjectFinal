@@ -111,26 +111,6 @@ namespace BloodBankProject.DAL
 
         #endregion
 
-        #region PR_BloodBag_SelectInStockExpiredOutedBloodBagsByMonthAreaChart
-        public DataTable PR_BloodBag_SelectInStockExpiredOutedBloodBagsByMonthAreaChart()
-        {
-           /* try
-            {*/
-                SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
-                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectInStockExpiredOutedBloodBagsByMonthAreaChart");
-                DataTable dtBloodBag = new DataTable();
-                using (IDataReader drBloodBag = sqlDB.ExecuteReader(dbCMD))
-                {
-                    dtBloodBag.Load(drBloodBag);
-                }
-                return dtBloodBag;
-           /* }
-            catch (Exception ex)
-            {
-                return null;
-            }*/
-        }
-
-        #endregion
+        
     }
 }

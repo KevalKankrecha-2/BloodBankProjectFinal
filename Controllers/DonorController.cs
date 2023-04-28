@@ -137,6 +137,7 @@ namespace BloodBankProject.Controllers
         {
             LOC_DAL dalLOC = new LOC_DAL();
             DataTable dt = dalLOC.PR_City_SelectForDropDownListByStateID(StateID);
+
             List<CityDropDownModel> CityDropDownList = new List<CityDropDownModel>();
             foreach (DataRow dr in dt.Rows)
             {
@@ -156,6 +157,9 @@ namespace BloodBankProject.Controllers
             return RedirectToAction("Index");
         }
         #endregion
+
+
+
     }
 
 }
