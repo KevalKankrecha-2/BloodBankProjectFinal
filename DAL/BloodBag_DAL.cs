@@ -13,8 +13,8 @@ namespace BloodBankProject.DAL
         #region PR_BloodBag_SelectInStockBloodBagsCountByBloodGroup
         public DataTable PR_BloodBag_SelectInStockBloodBagsCountByBloodGroup()
         {
-           /* try
-            {*/
+            try
+            {
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_BloodBag_SelectInStockBloodBagsCountByBloodGroup");
                 DataTable dtBloodBag = new DataTable();
@@ -23,11 +23,11 @@ namespace BloodBankProject.DAL
                     dtBloodBag.Load(drBloodBag);
                 }
                 return dtBloodBag;
-          /*  }
+            }
             catch (Exception ex)
             {
                 return null;
-            }*/
+            }
         }
 
         #endregion
