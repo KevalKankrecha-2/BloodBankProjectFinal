@@ -128,7 +128,9 @@
                                     <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
                                         <thead>
                                             <tr>
+                                                <th>Action</th>
                                                 <th>Donor name</th>
+                                                <th>Blood Group</th>
                                                 <th>State Name</th>
                                                 <th>City Name</th>
                                                 <th>Address</th>
@@ -141,37 +143,16 @@
                                                 <th>Pulse</th>
                                                 <th>BP</th>
                                                 <th>Weight</th>
-                                                <th>Blood Group</th>
                                                 <th>Description</th>
                                                 <th>Creation Date</th>
                                                 <th>Modification Date</th>
                                                 <th>Image</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach (DataRow drDonor in Model.Rows)
                                             {
                                                 <tr>
-                                                    <td>@drDonor["DonorName"]</td>
-                                                    <td>@drDonor["StateName"]</td>
-                                                    <td>@drDonor["CityName"]</td>
-                                                    <td>@drDonor["Address"]</td>
-                                                    <td>@drDonor["ContactNumber"]</td>
-                                                    <td>@drDonor["BirthDate"]</td>
-                                                    <td>@drDonor["Email"]</td>
-                                                    <td>@drDonor["Gender"]</td>
-                                                    <td>@drDonor["ProofType"]</td>
-                                                    <td>@drDonor["ProofNumber"]</td>
-                                                    <td>@drDonor["Pulse"]</td>
-                                                    <td>@drDonor["BP"]</td>
-                                                    <td>@drDonor["Weight"]</td>
-                                                    <td>@drDonor["BloodGroupName"]</td>
-                                                    <td>@drDonor["Description"]</td>
-                                                    <td>@drDonor["CreationDate"]</td>
-                                                    <td>@drDonor["ModificationDate"]</td>
-                                                    <td><img src="@Url.Content(drDonor["Image"].ToString())" class="img-fluid" /></td>
-
                                                     <td>
                                                         <div class="row">
                                                             <div class="col-lg-6">
@@ -192,6 +173,26 @@
                                                             </div>
                                                         </div>
                                                     </td>
+
+                                                    <td>@drDonor["DonorName"]</td>
+                                                    <td>@drDonor["BloodGroupName"]</td>
+                                                    <td>@drDonor["StateName"]</td>
+                                                    <td>@drDonor["CityName"]</td>
+                                                    <td>@drDonor["Address"]</td>
+                                                    <td>@drDonor["ContactNumber"]</td>
+                                                    <td>@drDonor["BirthDate"]</td>
+                                                    <td>@drDonor["Email"]</td>
+                                                    <td>@drDonor["Gender"]</td>
+                                                    <td>@drDonor["ProofType"]</td>
+                                                    <td>@drDonor["ProofNumber"]</td>
+                                                    <td>@drDonor["Pulse"]</td>
+                                                    <td>@drDonor["BP"]</td>
+                                                    <td>@drDonor["Weight"]</td>
+                                                    <td>@drDonor["Description"]</td>
+                                                    <td>@drDonor["CreationDate"]</td>
+                                                    <td>@drDonor["ModificationDate"]</td>
+                                                    <td><img src="@Url.Content(drDonor["Image"].ToString())" class="img-fluid" /></td>
+
                                                 </tr>
                                             }
                                         </tbody>

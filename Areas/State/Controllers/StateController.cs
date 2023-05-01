@@ -3,14 +3,13 @@ using BloodBankProject.BAL;
 using BloodBankProject.DAL;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
-using BloodBankProject.BAL;
 
 namespace BloodBankProject.Areas.State.Controllers
 {
     [CheckAccess]
     [Area("State")]
     [Route("State/[controller]/[action]")]
-    public class HomeController : Controller
+    public class StateController : Controller
     {
         #region StateList
         public ActionResult Index()
@@ -20,7 +19,6 @@ namespace BloodBankProject.Areas.State.Controllers
             return View("StateList", dtState);
         }
         #endregion
-       
 
         #region AddEdit
         public ActionResult AddEdit(int? StateID)
